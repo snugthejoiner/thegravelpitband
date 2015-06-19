@@ -1,0 +1,24 @@
+<h1>Shows</h1>
+
+<div class="row">
+  <div class="col-md-12">
+    <% @shows.to_enum.with_index(1).each do |show, i| %>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= i %>. <%= show.date.strftime('%m/%d/%Y') %> <%= show.place.name %> in <%= show.place.city %>, <%= show.place.state %> | <%= link_to "details", show %>
+          </h4>
+          <small>
+            <%= link_to 'Edit', edit_show_path(show) %> | <%= link_to 'Delete', show, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </small>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to 'New Show', new_show_path, class: 'btn btn-success'  %>
+  </div>
+</div>
