@@ -16,6 +16,7 @@ class ShowsController < ApplicationController
   # GET /shows/new
   def new
     @show = Show.new
+    authorize @show
   end
 
   # GET /shows/1/edit

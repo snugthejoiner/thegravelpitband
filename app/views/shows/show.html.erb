@@ -3,10 +3,13 @@
   <div class="col-md-12">
     <div class="media">
         <div class="media-body">
-          <h4 class="media-heading">
-            <%= @show.date.strftime('%m/%d/%Y') %>
-            <%= @show.place.name %> in <%= @show.place.city %>, <%= @show.place.state %>
-          </h4>
+          <h2 class="media-heading">
+            <%= @show.date.strftime('%A, %B %e, %Y') %>
+          </h2>
+          <h2>            
+            <%= @show.place.name %>
+          </h2>
+          <h3><%= @show.place.address %> <%= @show.place.city %>, <%= @show.place.state %></h3>
         </div>
       </div>
       <%= link_to 'Edit', edit_show_path(@show) %> |
