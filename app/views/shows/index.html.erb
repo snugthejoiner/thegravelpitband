@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-md-12">
-    <% @shows.to_enum.with_index(1).each do |show, i| %>
+    <% @shows.each do |show| %>
       <div class="media">
         <div class="media-body">
-            <%= i %>. <%= show.date.strftime('%m/%d/%Y') %> <%= show.place.name %>
+            <%= show.date.strftime('%m/%d/%Y') %> <%= show.place.name %>
             <% if show.place.city? %>
               in <%= show.place.city %>, 
             <% end %>

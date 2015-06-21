@@ -1,0 +1,2 @@
+class ActPolicy < ShowPolicy
+end

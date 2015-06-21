@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  post 'add_performance' => 'performances#create'
+
+  delete 'remove_performance' => 'performances#destroy'
+
+  resources :acts
+
   devise_for :users
   get 'welcome/index'
 

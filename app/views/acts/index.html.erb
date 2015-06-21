@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-12">
+    <% @acts.each do |act| %>
+      <p><%= act.name %>
+          <% if user_signed_in? %>
+            <small>
+              <%= link_to 'Edit', edit_act_path(act) %> | <%= link_to 'Delete', act, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </small>
+            </p>
+          <% end %>
+    <% end %>
+  </div>
+</div>
+<br>
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+    <div class="row">
+      <div class="col-md-12">
+        <%= link_to 'New Act', new_act_path, class: 'btn btn-success'  %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

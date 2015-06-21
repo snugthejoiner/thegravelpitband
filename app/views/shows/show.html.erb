@@ -7,11 +7,15 @@
             <%= @show.date.strftime('%A, %B %e, %Y') %>
           </h2>
           <h2>            
-            <%= @show.place.name %>
+            <%= @show.place.name %> <%= @show.place.address %>
           </h2>
-          <h3><%= @show.place.address %> <%= @show.place.city %>, <%= @show.place.state %></h3>
+          <h2><%= @show.place.city %>, <%= @show.place.state %></h2>
+          <% @performances.each do |performance| %>
+          <h3><%= performance.act.name%></h3>
+            <% end %>
         </div>
       </div>
+      <hr>
       <%= link_to 'Edit', edit_show_path(@show) %> |
       <%= link_to 'Back', shows_path %>
   </div>

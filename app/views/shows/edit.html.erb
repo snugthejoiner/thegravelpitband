@@ -1,6 +1,22 @@
 <h1>Edit Show</h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @show %> |
-<%= link_to 'Back', shows_path %>
+<div class="row">
+  <div class="col-md-12">
+    <%= render 'form' %>
+    <%= @show.place.name %>
+    <%= @show.place.city %> <%= @show.place.state %>
+    <p><%= link_to 'Back', shows_path %></p>
+    <hr>
+    
+    <h3>Acts</h3>
+    <small>
+     <% @acts.each do |act| %>
+      <div class="media">
+        <div class="media-body">
+            <p><%= link_to "Remove", remove_performance_path(show_id: @show.id, act_id: act.id), method: :delete, class: 'btn btn-xs btn-danger' %> <%=act.name %></p>
+            <p><%= link_to "Add", add_performance_path(show_id: @show.id, act_id: act.id), method: :post, class: 'btn btn-xs btn-success' %> <%=act.name %></p>
+        </div>
+      </div>  
+    <% end %>
+  </small>
+</div>
