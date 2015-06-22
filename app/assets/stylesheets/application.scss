@@ -17,12 +17,3 @@
 @import "bootstrap";
 
 img {max-width: 20px; max-height: 20px;}
-
-body {
-  padding-top: 60px;
-}
-@media (max-width: 979px) {
-  body {
-    padding-top: 0px;
-  }
-}

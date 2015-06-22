@@ -1,0 +1,4 @@
+<h2><%= show.date.strftime('%A, %B %e, %Y') %></h2>
+<h2><%= show.place.name %> <%= show.place.address %></h2>
+<h2><%= show.place.city %>, <%= show.place.state %></h2>
+<h2><%= render partial: 'performance', collection: @performances %></h2>

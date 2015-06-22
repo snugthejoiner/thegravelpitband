@@ -3,16 +3,13 @@
     <% @shows.each do |show| %>
       <div class="media">
         <div class="media-body">
-            <%= show.date.strftime('%m/%d/%Y') %> <%= show.place.name %>
-            <% if show.place.city? %>
-              in <%= show.place.city %>, 
-            <% end %>
-            <%= show.place.state %> | <%= link_to "details", show %>
-          <% if user_signed_in? %>
-            <small>
-              <%= link_to 'Edit', edit_show_path(show) %> | <%= link_to 'Delete', show, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </small>
-          <% end %>
+            <div class="listing">
+              <%= show.date.strftime('%m/%d/%Y') %> <%= show.place.name %>
+                <% if show.place.city? %>
+                  in <%= show.place.city %>, 
+                <% end %>
+              <%= show.place.state %> <small><%= link_to "details", show %></small>
+            </div>
         </div>
       </div>   
     <% end %>
