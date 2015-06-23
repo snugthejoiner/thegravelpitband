@@ -51,3 +51,4 @@ class StoriesController < ApplicationController
   def story_params
     params.require(:story).permit(:title, :body, :user_id, :song_id, :release_id)
   end
+end
