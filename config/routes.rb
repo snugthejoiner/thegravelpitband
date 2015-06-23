@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :stories
+
+  resources :ratings
+
+  resources :releases
+
+  resources :songs
+
   post 'add_performance' => 'performances#create'
 
   delete 'remove_performance' => 'performances#destroy'

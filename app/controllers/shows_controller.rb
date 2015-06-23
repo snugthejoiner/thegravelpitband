@@ -11,7 +11,6 @@ class ShowsController < ApplicationController
   # GET /shows/1.json
   def show
     @show = Show.find(params[:id])
-    @performances =  Performance.where(show_id: @show.id)
   end
 
   # GET /shows/new
@@ -24,7 +23,7 @@ class ShowsController < ApplicationController
   def edit
     @acts = Act.all
     @show = Show.find(params[:id])
-    @performances = Performance.all
+    # @performances = Performance.all
   end
 
   # POST /shows

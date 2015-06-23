@@ -1,22 +1,25 @@
-<h1>Edit Show</h1>
-
 <div class="row">
   <div class="col-md-12">
+    <h2>
+      <%= @show.place.name %> <%= @show.place.city %> <%= @show.place.state %></h2>
     <%= render 'form' %>
-    <%= @show.place.name %>
-    <%= @show.place.city %> <%= @show.place.state %>
+    <h3><%= render partial: 'performance', collection: @show.performances %></h3>
+    <br>
     <p><%= link_to 'Back', shows_path %></p>
+  </div>
+</div>
     <hr>
-    
-    <h3>Acts</h3>
-    <small>
-     <% @acts.each do |act| %>
-      <div class="media">
-        <div class="media-body">
-            <p><%= link_to "Remove", remove_performance_path(show_id: @show.id, act_id: act.id), method: :delete, class: 'btn btn-xs btn-danger' %> <%=act.name %></p>
-            <p><%= link_to "Add", add_performance_path(show_id: @show.id, act_id: act.id), method: :post, class: 'btn btn-xs btn-success' %> <%=act.name %></p>
-        </div>
-      </div>  
-    <% end %>
-  </small>
+<div>
+  <div class="col-md-12">    
+    <h3>Add or Cut bands from the bill</h3>
+      <small>
+        <% @acts.each do |act| %>
+            <% if @show.acts.include? act %>
+              <%= link_to "Cut", remove_performance_path(show_id: @show.id, act_id: act.id), method: :delete, class: 'btn btn-xs btn-default' %> <%=act.name %> |
+            <% else %>
+              <%= link_to "Add", add_performance_path(show_id: @show.id, act_id: act.id), method: :post, class: 'btn btn-xs btn-success' %> <%=act.name %> |
+            <% end %>
+        <% end %>
+      </small>
+  </div>
 </div>

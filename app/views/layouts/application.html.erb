@@ -10,11 +10,14 @@
 <body>
 
   <div class="container-fluid">
-    <ul class="nav nav-tabs">
-      <li><%= link_to image_tag("pitsymbol.jpg" ), root_path %></li>
-      <li><%= link_to "Shows", shows_path %></li>
-      <li><%= link_to "Songs", root_path %></li>
-      <li><%= link_to "Catalog", root_path %></li>
+    <div class="navbar">
+      <ul class="nav navbar-nav navbar-left">
+        <li><%= link_to image_tag("pitsymbol.jpg" ), root_path %></li>
+        <li><%= link_to "Shows", shows_path %></li>
+        <li><%= link_to "Songs", songs_path %></li>
+        <li><%= link_to "Catalog", root_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
         <% if current_user.name.nil? || current_user.name == "" %>
           <li><%= link_to current_user.email, edit_user_registration_path(current_user) %></li>
@@ -28,6 +31,7 @@
           <li><%= link_to "Sign Up", new_user_registration_path %></li>
           <% end %>
     </ul>
+  </div>
 <div class="row">
         <% if flash[:notice] %>
          <div class="alert alert-success">

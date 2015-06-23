@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150620042856) do
+ActiveRecord::Schema.define(version: 20150622050516) do
 
   create_table "acts", force: :cascade do |t|
     t.string   "name"
@@ -38,6 +38,26 @@ ActiveRecord::Schema.define(version: 20150620042856) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "rating_value"
+    t.integer  "user_id"
+    t.integer  "song_id"
+    t.integer  "release_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "ratings", ["release_id"], name: "index_ratings_on_release_id"
+  add_index "ratings", ["song_id"], name: "index_ratings_on_song_id"
+  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
+
+  create_table "releases", force: :cascade do |t|
+    t.string   "title"
+    t.date     "release_date"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "shows", force: :cascade do |t|
     t.datetime "date"
     t.integer  "place_id"
@@ -46,6 +66,30 @@ ActiveRecord::Schema.define(version: 20150620042856) do
   end
 
   add_index "shows", ["place_id"], name: "index_shows_on_place_id"
+
+  create_table "songs", force: :cascade do |t|
+    t.string   "title"
+    t.text     "lyrics"
+    t.integer  "release_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "songs", ["release_id"], name: "index_songs_on_release_id"
+
+  create_table "stories", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "song_id"
+    t.integer  "release_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "stories", ["release_id"], name: "index_stories_on_release_id"
+  add_index "stories", ["song_id"], name: "index_stories_on_song_id"
+  add_index "stories", ["user_id"], name: "index_stories_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",        null: false

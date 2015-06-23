@@ -1,14 +1,14 @@
 
 <div class="row">
   <div class="col-md-12">
-    <div class="media">
-        <div class="media-body">
-          <h2><%= render partial: 'show', locals: {show: @show} %></h2>
-        </div>
-      </div>
-      <hr>
-      <% if user_signed_in? %>
-    <%= link_to 'Edit', edit_show_path(@show) %> | <%= link_to 'Delete', @show, method: :delete, data: { confirm: 'Are you sure?' } %> | <%= link_to 'Back', shows_path %>
-<% end %>
+    <h2><%= render partial: 'show', locals: {show: @show} %></h2>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-12">
+    <% if user_signed_in? %>
+      <%= link_to 'Edit', edit_show_path(@show) %> | <%= link_to 'Delete', @show, method: :delete, data: { confirm: 'Are you sure?' } %> | <%= link_to 'Back', shows_path %>
+    <% end %>
   </div>
 </div>
