@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :stories
+  has_many :stories, :as => :storiable
   has_many :ratings
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

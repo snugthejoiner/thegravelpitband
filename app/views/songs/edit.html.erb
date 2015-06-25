@@ -1,2 +1,13 @@
-<h1>Songs#edit</h1>
-<p>Find me in app/views/songs/edit.html.erb</p>
+<div class="row">
+  <div class="col-md-12">
+    <h2>
+      <%= markdown_to_html @song.lyrics %></h2>
+    <%= render 'form' %>
+    <br>
+    <p><%= link_to 'Back', songs_path %></p>
+    <%= link_to "Add", add_story_path(song_id: @song.id), method: :post, class: 'btn btn-xs btn-success' %> <%=act.name %>
+  </div>
+</div>
+<div>
+  <hr>
+</div>

@@ -36,7 +36,7 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])
     # authorize @song
     if @song.update(song_params)
-      flash[:notice] = "song was updated."
+      flash[:notice] = "This song has been updated."
       redirect_to @song
     else
       flash[:error] = "There was an error updating the song."

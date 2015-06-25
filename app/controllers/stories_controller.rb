@@ -8,15 +8,14 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.new(story_params)
-
     if @story.save
-      flash[:notice] = "Succesfully created."
-      redirect_to @story
+      flash[:notice] = "Comment was saved"
+      redirect_to root_path
     else
-      flash[:error] = "There was an error saving the Story."
+      flash[:error] = "There was an error."
       render :new
     end
-  end
+ end
 
   def edit
     @story = Story.find(params[:id])
