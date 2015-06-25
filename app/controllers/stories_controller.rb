@@ -10,7 +10,7 @@ class StoriesController < ApplicationController
     @story = Story.new(story_params)
     if @story.save
       flash[:notice] = "Comment was saved"
-      redirect_to root_path
+      redirect_to :back
     else
       flash[:error] = "There was an error."
       render :new
@@ -18,6 +18,7 @@ class StoriesController < ApplicationController
  end
 
   def edit
+    session[:return_to] = request.referer
     @story = Story.find(params[:id])
   end
 
@@ -33,7 +34,7 @@ class StoriesController < ApplicationController
     # authorize @story
     if @story.update(story_params)
       flash[:notice] = "Updated."
-      redirect_to @story
+      redirect_to session.delete(:return_to)
     else
       flash[:error] = "There was an error updating the Story."
       render :edit

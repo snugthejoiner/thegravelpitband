@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :stories
+  resources :stories, except: :show
     
   resources :ratings
 

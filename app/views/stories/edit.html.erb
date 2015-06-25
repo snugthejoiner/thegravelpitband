@@ -1,7 +1,5 @@
 <div class="row">
   <div class="col-md-12">
-    <h2>
-      <%= markdown_to_html @story.body %></h2>
     <%= form_for(@story) do |f| %>
   <% if @story.errors.any? %>
     <div id="error_explanation">
@@ -20,7 +18,7 @@
   </div>
 <% end %>
     <br>
-    <p><%= link_to 'Back', storys_path %></p>
+    <p><%= link_to 'Back', :back %></p>
   </div>
 </div>
 <div>

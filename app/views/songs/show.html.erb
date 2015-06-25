@@ -7,9 +7,23 @@
     <p><%= markdown_to_html @song.lyrics %></p>
   </div>
 </div>
+
 <hr>
 
-<%= render partial: '/stories/new_comment', locals: {song: @song} %>
+<div class="row">
+  <div class="col-md-12">
+    <%= render partial: 'story', locals: {song: @song} %>
+  </div>
+</div>
+
+
+<% if user_signed_in? %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= render partial: '/stories/new_comment', locals: {song: @song} %>
+    </div>
+  </div>
+<% end %>
 
 <div class="row">
   <div class="col-md-12">
