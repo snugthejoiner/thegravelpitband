@@ -29,6 +29,7 @@ class SongsController < ApplicationController
   end
 
   def show
+    session[:return_to] = request.referer
     @song = Song.find(params[:id])
   end
 

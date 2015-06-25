@@ -10,16 +10,17 @@ font-size: x-large;
   font-size: small;
 }
 
-a:link { 
-  color: #666666;
+.listing a:link { 
+  color: #999999;
 }
-a:visited { 
-  color: #666666;
+.listing a:visited { 
+  color: #999999;
 }
-a:hover { 
-  color: #CCCCCC;
+.listing a:hover { 
+  color: #000000;
 }
-a:active { 
+
+.listing:active { 
   color: #333333;
 }
 

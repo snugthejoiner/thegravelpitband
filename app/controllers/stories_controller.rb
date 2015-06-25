@@ -23,6 +23,14 @@ class StoriesController < ApplicationController
   end
 
   def destroy
+    @story = Story.find(params[:id])
+    if @story.destroy
+    redirect_to session.delete(:return_to)
+    flash[:notice] = "Comment removed"
+    else
+      flash[:error] = "There was an error."
+      render :show
+    end
   end
 
   def show
@@ -42,10 +50,6 @@ class StoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-  def set_song
-    @story = Story.find(params[:id])
-  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def story_params

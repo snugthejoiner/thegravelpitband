@@ -13,5 +13,5 @@ class User < ActiveRecord::Base
   def citizen?
     self.role == 'citizen'
   end
-
+  
 end

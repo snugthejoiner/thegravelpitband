@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <%= form_for Story.new do |f| %>
     <div class="form-group">
-      <p><%= f.text_area :body, size: "60x5", placeholder: "Comment", autofocus: true %></p>
+      <p><%= f.text_area :body, size: "60x2", placeholder: "Comment", autofocus: true %></p>
       <%= f.hidden_field :song_id, value: song.id %>
       <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.submit "Save" , class: 'btn btn-primary' %>

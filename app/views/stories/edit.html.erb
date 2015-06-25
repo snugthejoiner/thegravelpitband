@@ -11,14 +11,18 @@
       </ul>
     </div>
   <% end %>
-
+</div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    
   <div class="actions">
     <%= f.text_area :body, class: 'form-control' %>
-    <%= f.submit value="Update body" %>
+    <%= f.submit value="Update" %>
   </div>
 <% end %>
     <br>
-    <p><%= link_to 'Back', :back %></p>
+    <p><%= link_to 'Back', :back %></p><%= link_to 'Delete', remove_story_path(id: @story.id), method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
 </div>
 <div>

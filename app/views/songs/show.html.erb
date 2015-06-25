@@ -28,7 +28,12 @@
 <div class="row">
   <div class="col-md-12">
     <% if user_signed_in? %>
-      <%= link_to 'Edit', edit_song_path(@song) %> | <%= link_to 'Delete', @song, method: :delete, data: { confirm: 'Are you sure?' } %> | <%= link_to 'Back', songs_path %>
+      <% if current_user.admin? %>
+        <%= link_to '| EDIT', edit_song_path(@song) %>
+        <% end %>
+      <% else %>
+        <p><mark>To comment on a song you need to sign up for a (free) account and become a citizen</mark></p>
     <% end %>
+    <%= link_to 'Back To Songs', songs_path %>
   </div>
 </div>

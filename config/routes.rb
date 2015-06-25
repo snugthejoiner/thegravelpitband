@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :stories, except: :show
-    
+  resources :stories, except: [:show, :destroy]
+  delete 'remove_story' => 'stories#destroy'
+
   resources :ratings
 
   resources :releases

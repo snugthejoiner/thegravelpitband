@@ -1,4 +1,13 @@
 <% @song.stories.each do |story| %>
-  <p>'<%= story.body %>' <small>said <%= story.user.name %> on <%= story.updated_at.strftime('%A, %B %e, %Y') %></small><p>
-  <%= link_to 'Edit', edit_story_path(story) %> | <%= link_to 'Delete', story, method: :delete, data: { confirm: 'Are you sure?' } %> | <%= link_to 'Back', @song %>
+  <p>'<%= story.body %>' <small>said 
+    <% if story.user.name.nil? %>
+      <%= story.user.email %>
+    <% else %>
+      <%= story.user.name %>
+    <% end %>
+      on <%= story.updated_at.strftime('%A, %B %e, %Y') %>
+  <% if user_signed_in? %>  
+    <%= link_to '| EDIT', edit_story_path(story) %>
+  <% end %>
+  </small></p>
 <% end %>
