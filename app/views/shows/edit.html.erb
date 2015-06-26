@@ -3,7 +3,7 @@
     <h2>
       <%= @show.place.name %> <%= @show.place.city %> <%= @show.place.state %></h2>
     <%= render 'form' %>
-    <h3><%= render partial: 'performance', collection: @show.performances %></h3>
+    <h3><%= @show.bill %></h3>
     <br>
     <p><%= link_to 'Back', shows_path %></p>
   </div>
@@ -15,7 +15,7 @@
       <small>
         <% @acts.each do |act| %>
             <% if @show.acts.include? act %>
-              <%= link_to "Cut", remove_performance_path(show_id: @show.id, act_id: act.id), method: :delete, class: 'btn btn-xs btn-default' %> <%=act.name %> |
+              <%= link_to "Cut", remove_performance_path(show_id: @show.id, act_id: act.id), method: :delete, class: 'btn btn-xs btn-danger' %> <%=act.name %> |
             <% else %>
               <%= link_to "Add", add_performance_path(show_id: @show.id, act_id: act.id), method: :post, class: 'btn btn-xs btn-success' %> <%=act.name %> |
             <% end %>
