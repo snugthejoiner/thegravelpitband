@@ -4,10 +4,12 @@ class StoriesController < ApplicationController
 
   def new
     @story = Story.new
+    authorize @story
   end
 
   def create
     @story = Story.new(story_params)
+    authorize @story
     if @story.save
       flash[:notice] = "Comment was saved"
       redirect_to :back
@@ -24,6 +26,7 @@ class StoriesController < ApplicationController
 
   def destroy
     @story = Story.find(params[:id])
+    authorize @story
     if @story.destroy
     redirect_to session.delete(:return_to)
     flash[:notice] = "Comment removed"
@@ -39,7 +42,7 @@ class StoriesController < ApplicationController
 
   def update
     @story = Story.find(params[:id])
-    # authorize @story
+    authorize @story
     if @story.update(story_params)
       flash[:notice] = "Updated."
       redirect_to session.delete(:return_to)

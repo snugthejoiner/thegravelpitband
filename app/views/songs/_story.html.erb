@@ -6,8 +6,8 @@
       <%= story.user.name %>
     <% end %>
       on <%= story.updated_at.strftime('%A, %B %e, %Y') %>
-  <% if user_signed_in? %>  
-    <%= link_to '| EDIT', edit_story_path(story) %>
+  <% if policy(story).update? %> 
+    | <%= link_to 'EDIT', edit_story_path(story) %>
   <% end %>
   </small></p>
 <% end %>

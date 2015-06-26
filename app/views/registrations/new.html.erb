@@ -4,12 +4,21 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.email_field :name %>
+    <%= f.label :name %> <em>(required. visible to others. can be whimsical)</em><br />
+    <%= f.text_field :name %>
   </div>
 
+  <br>
+
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :birthday %> <em>(not required. enter to understand your place in the gravel pit universe)</em><br />
+    <%= f.date_select :birthdate, start_year: 1901, end_year: 2013, class: 'form-control' %>
+  </div>
+
+  <br>
+
+  <div class="field">
+    <%= f.label :email %> <em>(required)</em><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
@@ -25,6 +34,8 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
+
+  <br>
 
   <div class="actions">
     <%= f.submit "Sign up" %>

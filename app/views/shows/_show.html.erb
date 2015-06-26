@@ -1,7 +1,12 @@
-<%= link_to show.date.strftime('%A, %B %e, %Y'), show %>
-<%= show.place.name %> <%= show.place.address %>
-<%= show.place.city %>, <%= show.place.state %>
-<% if show.performances? %>
-<span class="performances">with <%= render partial: 'performance', collection: show.performances %></span>
-<% end %>
-<br>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="listing">
+    <%= link_to show.date.strftime('%A, %B %e, %Y'), show %>
+      <%= show.description %>
+      <% if show.performances? %>
+        <small class="listing">with <%= show.bill %></small>
+      <% end %>
+    </div>
+    </div>
+</div>

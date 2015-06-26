@@ -1,15 +1,21 @@
-
 <div class="row">
   <div class="col-md-12">
-    <h2><%= render partial: 'show', locals: {show: @show} %></h2>
-  </div>
+    <div class="listing">
+    <h1><%= @show.date.strftime('%A, %B %e, %Y') %></h1>
+      <h2><%= @show.description %></h2>
+      <% if @show.performances? %>
+        <p>with <%= @show.bill %></p>
+      <% end %>
+    </div>
+    </div>
 </div>
+
 <hr>
 
 <div class="row">
   <div class="col-md-12">
     <% if user_signed_in? && current_user.admin? %>
-      <%= link_to '| EDIT', edit_show_path(@show) %>
+      <%= link_to 'EDIT', edit_show_path(@show) %> |
     <% end %>
     <%= link_to 'Back To Shows', shows_path %>
   </div>

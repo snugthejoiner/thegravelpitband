@@ -1,7 +1,8 @@
 <div class="row">
   <div class="col-md-12">
-    <h2>
-      <%= markdown_to_html @song.lyrics %></h2>
+    <p>
+      <%= simple_format(@song.lyrics) %>
+    </p>
     <%= render 'form' %>
     <br>
     <p><%= link_to 'Back', songs_path %></p>

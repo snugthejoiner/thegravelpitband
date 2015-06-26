@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'users/show'
+
   resources :stories, except: [:show, :destroy]
   delete 'remove_story' => 'stories#destroy'
 
@@ -15,7 +17,8 @@ Rails.application.routes.draw do
 
   resources :acts
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations'}
+  
   get 'welcome/index'
 
   resources :shows

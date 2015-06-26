@@ -6,12 +6,22 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  validates :name, presence: true
+
   def admin?
     self.role == 'admin'
+  end
+
+  def moderator?
+    self.role == 'moderator'
+  end
+
+  def modplus?
+    admin? || moderator?
   end
 
   def citizen?
     self.role == 'citizen'
   end
-  
+
 end
