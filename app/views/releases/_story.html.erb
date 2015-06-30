@@ -1,0 +1,13 @@
+<% @release.stories.each do |story| %>
+  <p>'<%= story.body %>' <small>said 
+    <% if story.user.name.nil? %>
+      <%= story.user.email %>
+    <% else %>
+      <%= story.user.name %>
+    <% end %>
+      on <%= story.updated_at.strftime('%A, %B %e, %Y') %>
+  <% if policy(story).update? %> 
+    | <%= link_to 'EDIT', edit_story_path(story) %>
+  <% end %>
+  </small></p>
+<% end %>

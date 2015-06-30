@@ -3,7 +3,12 @@
     <%= form_for Story.new do |f| %>
     <div class="form-group">
       <p><%= f.text_area :body, size: "60x2", placeholder: "Comment", autofocus: true %></p>
-      <%= f.hidden_field :song_id, value: song.id %>
+      <% if @song %>
+        <%= f.hidden_field :song_id, value: song.id %>
+        <% end %>
+      <% if @release %>
+        <%= f.hidden_field :release_id, value: release.id %>
+        <% end %>
       <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.submit "Save" , class: 'btn btn-success' %>
     <% end %>

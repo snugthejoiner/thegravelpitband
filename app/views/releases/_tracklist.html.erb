@@ -1,0 +1,9 @@
+<% @release.songs.each do |song| %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="listing">
+        <%= link_to song.title, song %>
+      </div>
+    </div>
+  </div>
+<% end %>

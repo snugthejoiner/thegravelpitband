@@ -1,2 +1,19 @@
-<h1>Releases#index</h1>
-<p>Find me in app/views/releases/index.html.erb</p>
+<div class="row">
+  <div class="col-md-12">
+    <p class="listing">
+      <% @releases.each do |release| %>
+      <h1><%= link_to release.title, release %> <small><%= release.release_date.strftime('%Y') %></small></h1>
+      <% end %>
+    </p>
+  </div>
+</div>
+<br>
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+    <div class="row">
+      <div class="col-md-12">
+        <%= link_to 'New Release', new_release_path, class: 'btn btn-success'  %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

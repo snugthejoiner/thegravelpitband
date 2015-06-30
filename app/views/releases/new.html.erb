@@ -1,2 +1,11 @@
-<h1>Releases#new</h1>
-<p>Find me in app/views/releases/new.html.erb</p>
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for @release do |f| %>
+    <div class="form-group">
+      <h1><%= f.text_field :title, placeholder: "Title", :autofocus => true %></h1>
+        <%= f.date_select :release_date, start_year: 1992, class: 'form-control' %>
+        <%= f.submit "Save" , class: 'btn btn-primary' %>
+      <% end %>
+    <%= link_to "Cancel", :back, class: 'btn btn-danger' %>
+  </div>
+</div>
