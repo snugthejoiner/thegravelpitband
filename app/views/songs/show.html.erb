@@ -4,7 +4,8 @@
     <h2>
       <%= @song.title %>
     </h2>
-    <%= simple_format(@song.lyrics) %>
+    <small><%= @song.song_rating %></small>
+    <p><%= simple_format(@song.lyrics) %></p>
   </div>
 </div>
 
@@ -32,7 +33,7 @@
         <%= link_to 'EDIT', edit_song_path(@song) %> |
         <% end %>
       <% else %>
-        <p><mark>To comment on a song you need to <%= link_to "Sign Up", new_user_registration_path %> for a (free) account and become a citizen</mark></p>
+        <p><mark>To rate or comment on a song you need to <%= link_to "Sign Up", new_user_registration_path %> for a (free) account and become a citizen</mark></p>
     <% end %>
     <%= link_to 'Back To Songs', songs_path %>
   </div>
