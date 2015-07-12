@@ -21,7 +21,7 @@ class StoryPolicy < ApplicationPolicy
   end
 
   def destroy?
-    edit?
+    update?
   end
 
 end

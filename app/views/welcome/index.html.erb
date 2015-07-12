@@ -1,1 +1,26 @@
-<h1>The Gravel Pit Universe</h1>
+<div class="jumbotron">
+  <h1>The Gravel Pit Universe</h1>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <h2><%= link_to "Songs", songs_path %></h2>
+    <p>Read the lyrics. <%= link_to "Sign Up", new_user_registration_path %> to become a Citizen and you can rate and comment on songs.</p>
+  </div>
+  <div class="col-md-4">
+    <h2><%= link_to "Catalog", releases_path %></h2>
+    <p>Ponder the recorded output. <%= link_to "Sign Up", new_user_registration_path %> to become a Citizen and you can rate and comment on releases.</p>  </div>
+  <div class="col-md-4">
+    <h2><%= link_to "Shows", shows_path %></h2>
+    <p>The history of performances.</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <h2><%= link_to "Sign Up", new_user_registration_path %></h2>
+    <p>Become a Citizen of The Gravel Pit Universe. Rate and comment on music. Membership is free, you only need to provide an email address and a name.</p>
+  </div>
+  <div class="col-md-8">
+    <h2><%= link_to "Find Your Place In The Universe", new_user_registration_path %></h2>
+    <p>Go the extra mile, provide your birthdate and see your history intertwined with the history of the band.</p>  
+  </div>
+</div>

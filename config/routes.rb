@@ -2,10 +2,11 @@ Rails.application.routes.draw do
 
   get 'users/show'
 
-  resources :stories, except: [:show, :destroy]
+  resources :stories, only: [:create, :edit, :new, :show, :update]
   delete 'remove_story' => 'stories#destroy'
 
-  resources :ratings
+  resources :ratings, only: [:create, :edit, :new, :show, :update]
+  delete 'remove_rating' => 'ratings#destroy'
 
   resources :releases
 
@@ -21,7 +22,8 @@ Rails.application.routes.draw do
   
   get 'welcome/index'
 
-  resources :shows
+  resources :shows, except: [:destroy]
+  delete 'remove_show' => 'shows#destroy'
 
   root to: 'welcome#index'
 

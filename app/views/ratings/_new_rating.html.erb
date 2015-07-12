@@ -1,8 +1,9 @@
 <div class="row">
   <div class="col-md-12">
-    <%= form_for Story.new do |f| %>
-    <div class="form-group">
-      <p><%= f.text_area :body, size: "60x1", placeholder: "Comment"%></p>
+    <hr>
+      <%= form_for Rating.new do |f| %>
+      <div class="form-group">
+      Your Rating <%= f.select(:rating_value, options_for_select([["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7", 7]])) %>      
       <% if @song %>
         <%= f.hidden_field :song_id, value: song.id %>
         <% end %>
@@ -10,9 +11,9 @@
         <%= f.hidden_field :release_id, value: release.id %>
         <% end %>
       <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.submit "Save" , class: 'btn btn-success btn-xs' %>
+    <%= f.submit "Save", class: 'btn btn-xs btn-success' %>
     <% end %>
-    <%= link_to "Cancel", @song, class: 'btn btn-danger btn-xs' %>
+    <hr>
   </div>
 </div>
 </div>

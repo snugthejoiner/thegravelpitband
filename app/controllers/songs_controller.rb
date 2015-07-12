@@ -2,7 +2,7 @@ class SongsController < ApplicationController
   before_action :set_song, only: [:show, :edit, :update, :destroy]
 
   def index
-    @songs = Song.all
+    @songs = Song.sorted_by_smart_alpha
   end
 
   def new
@@ -31,6 +31,9 @@ class SongsController < ApplicationController
   def show
     session[:return_to] = request.referer
     @song = Song.find(params[:id])
+    if user_signed_in?
+      @rating = Rating.where(song_id: @song.id, user_id: current_user.id).first
+    end
   end
 
   def update
@@ -53,6 +56,6 @@ class SongsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def song_params
-      params.require(:song).permit(:title, :lyrics)
+      params.require(:song).permit(:title, :lyrics, :release_id, :tracknumber)
     end
 end

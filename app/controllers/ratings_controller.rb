@@ -21,22 +21,31 @@ class RatingsController < ApplicationController
   end
 
   def edit
+    session[:return_to] = request.referer
     @rating = Rating.find(params[:id])
   end
 
   def destroy
-    @rating.destroy
+    @rating = Rating.find(params[:id])
+    authorize @rating
+    if @rating.destroy
+    redirect_to session.delete(:return_to)
+    flash[:notice] = "Your rating has been removed."
+    else
+      flash[:error] = "There was an error."
+      render :show
+    end
   end
 
   def show
-    @rating = Rating.find(params[:id])    
+    @rating = Rating.find(params[:id])   
   end
 
   def update
     @rating = Rating.find(params[:id])
     if @rating.update(rating_params)
       flash[:notice] = "Your rating has been updated."
-      redirect_to @release
+      redirect_to session.delete(:return_to)
     else
       flash[:error] = "There was an error updating your rating. You may be stuck with it."
       render :edit

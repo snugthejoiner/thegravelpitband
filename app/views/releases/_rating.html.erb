@@ -1,0 +1,8 @@
+<small>
+  <%= @release.release_rating %> <%= @release.user_release_rating(current_user) %>
+  <% if @release.rated_by_user?(current_user) %>
+  <%= render partial: '/ratings/form', locals: {rating: @rating} %>
+  <% else %>
+    <%= render partial: '/ratings/new_rating', locals: {release: @release} %>
+  <% end %>
+</small>

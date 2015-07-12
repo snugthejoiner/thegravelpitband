@@ -30,12 +30,16 @@ class ReleasesController < ApplicationController
   end
 
   def show
+    session[:return_to] = request.referer
     @release = Release.find(params[:id])
+    if user_signed_in?
+      @rating = Rating.where(release_id: @release.id, user_id: current_user.id).first
+    end
   end
 
   def update
     @release = Release.find(params[:id])
-    if @release.update(song_params)
+    if @release.update(release_params)
       flash[:notice] = "This release has been updated."
       redirect_to @release
     else

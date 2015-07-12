@@ -13,7 +13,45 @@
  *= require_tree .
  *= require_self
  */
+ 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 img {max-width: 20px; max-height: 20px;}
+
+a:hover { 
+  text-decoration:none;
+}
+
+.listing {
+font-size: x-large;
+}
+
+.listing small {
+  font-size: large;
+}
+
+.listing a:link { 
+  color: #999999;
+}
+.listing a:visited { 
+  color: #999999;
+}
+
+.listing a:hover { 
+  color: #000000;
+  text-decoration:none;
+}
+
+.listing:active { 
+  color: #333333;
+}
+
+.performances {
+  font-size: smaller;
+  color: #333333;
+}
+
+.btn {
+  color: #FFFFFF;
+}

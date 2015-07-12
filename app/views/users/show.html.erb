@@ -1,7 +1,31 @@
 <div class="row">
   <div class="col-md-12">
-    <h2>Name: <%= @user.name %></h2>
-    <h2>Email: <%= @user.email %></h2>
-    <h2>Birthday: <%= @user.birthdate %></h2>
+    <h3>Name: <%= @user.name %> | <%= link_to "Edit your settings", edit_user_registration_path(current_user) %></h3>
+    <h3>Email: <%= @user.email %></h3>
+    <h3>Birthday: <%= @user.birthdate.strftime('%A, %B %e, %Y') %></h3>
   </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-12">
+  <h4>Your Comments:</h4>
+  <% @user.stories.each do |story| %>
+    <p><%= story.body %>
+        <strong><%= link_to story.story_title %></strong></p>
+  <% end %>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+  <h4>Your Ratings:</h4>
+  <% @user.ratings.sorted_by_rating_type.each do |rating| %>
+    <p>You rated <%= rating.rating_type %><strong>
+      <% if rating.song %>
+        <%= link_to rating.rating_title, song_path(rating.song) %>
+      <% else %>
+        <%= link_to rating.rating_title, release_path(rating.release) %>      
+      <% end %>
+      </strong>: <%= rating.rating_value %> <small>out of 7</small></p>
+  <% end %>
+</div>
 </div>

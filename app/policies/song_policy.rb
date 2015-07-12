@@ -1,0 +1,3 @@
+class SongPolicy < ShowPolicy
+  
+end

@@ -1,0 +1,2 @@
+class RatingPolicy < StoryPolicy
+end

@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="col-md-12">
     <h2>
@@ -6,6 +7,20 @@
     released <%= @release.release_date.strftime('%A, %B %e, %Y') %>
   </div>
 </div>
+
+<% if user_signed_in? %>
+  <%= render partial: 'rating', locals: {release: @release} %>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= age_when_released(@release) %>
+  </div>
+</div>
+
+<% end %>
+
+<hr>
+
 
 <div class="row">
   <div class="col-md-12">
@@ -37,8 +52,8 @@
         <%= link_to 'EDIT', edit_release_path(@release) %> |
         <% end %>
       <% else %>
-        <p><mark>To comment on a release you need to <%= link_to "Sign Up", new_user_registration_path %> for a (free) account and become a citizen</mark></p>
+        <p><mark>To rate or comment on a release you need to <%= link_to "Sign Up", new_user_registration_path %> for a (free) account and become a citizen</mark></p>
     <% end %>
-    <%= link_to 'Back To Catalog', releases_path %>
+    <%= link_to 'Back', :back, class: 'btn btn-info' %>
   </div>
 </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150622050516) do
+ActiveRecord::Schema.define(version: 20150709145343) do
 
   create_table "acts", force: :cascade do |t|
     t.string   "name"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20150622050516) do
 
   create_table "releases", force: :cascade do |t|
     t.string   "title"
-    t.date     "release_date"
+    t.datetime "release_date"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -71,8 +71,9 @@ ActiveRecord::Schema.define(version: 20150622050516) do
     t.string   "title"
     t.text     "lyrics"
     t.integer  "release_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "tracknumber", default: 1
   end
 
   add_index "songs", ["release_id"], name: "index_songs_on_release_id"

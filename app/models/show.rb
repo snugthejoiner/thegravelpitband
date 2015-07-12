@@ -9,10 +9,11 @@ class Show < ActiveRecord::Base
 
   def bill
     a = self.acts.pluck(:name)
-    a.join(",")
+    a.join(", ")
   end
 
   def description
+    
     self.place.name + " " +
     if self.place.address != nil && self.place.address != ""
       self.place.address
@@ -32,5 +33,6 @@ class Show < ActiveRecord::Base
 
   end
 
-  default_scope { order('date DESC') }
+  default_scope { order(date: :desc) }
+
 end

@@ -3,9 +3,16 @@
   <div class="col-md-12">
     <h2>
       <%= @song.title %>
+      <% if @song.release %>
+      <small> from the release <%= link_to @song.release.title, release_path(@song.release) %></small>
+      <% end %>
     </h2>
-    <small><%= @song.song_rating %></small>
-    <p><%= simple_format(@song.lyrics) %></p>
+      <% if user_signed_in? %>
+        <%= render partial: 'rating', locals: {song: @song} %>
+      <% end %>
+     
+    </small>
+    <h5><%= simple_format(@song.lyrics) %></h5>
   </div>
 </div>
 
@@ -29,12 +36,12 @@
 <div class="row">
   <div class="col-md-12">
     <% if user_signed_in? %>
-      <% if current_user.admin? %>
+      <% if policy(@song).edit? %>
         <%= link_to 'EDIT', edit_song_path(@song) %> |
         <% end %>
       <% else %>
         <p><mark>To rate or comment on a song you need to <%= link_to "Sign Up", new_user_registration_path %> for a (free) account and become a citizen</mark></p>
     <% end %>
-    <%= link_to 'Back To Songs', songs_path %>
+    <%= link_to 'Back', :back, class: 'btn btn-info' %>
   </div>
 </div>

@@ -1,3 +1,11 @@
+<% if policy(Act.new).create? %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to 'New Act', new_act_path, class: 'btn btn-success'  %>
+    </div>
+  </div>
+<% end %>
+<br>
 <div class="row">
   <div class="col-md-12">
     <% @acts.each do |act| %>
@@ -11,13 +19,3 @@
     <% end %>
   </div>
 </div>
-<br>
-<% if user_signed_in? %>
-  <% if current_user.admin? %>
-    <div class="row">
-      <div class="col-md-12">
-        <%= link_to 'New Act', new_act_path, class: 'btn btn-success'  %>
-      </div>
-    </div>
-  <% end %>
-<% end %>

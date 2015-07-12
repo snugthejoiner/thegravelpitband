@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-md-12">
-    <p class="listing">
+    <div class="listing">
       <% @releases.each do |release| %>
       <h1><%= link_to release.title, release %> <small><%= release.release_date.strftime('%Y') %></small></h1>
       <% end %>
-    </p>
+    </div>
   </div>
 </div>
 <br>

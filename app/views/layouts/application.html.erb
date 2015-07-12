@@ -9,19 +9,17 @@
 </head>
 <body>
 
-<!-- <%= params %> <%= request.referrer %> -->
-  
   <div class="container-fluid">
     <div class="navbar">
       <ul class="nav navbar-nav navbar-left">
         <li><%= link_to image_tag("pitsymbol.jpg" ), root_path %></li>
-        <li><%= link_to "Shows", shows_path %></li>
         <li><%= link_to "Songs", songs_path %></li>
         <li><%= link_to "Catalog", releases_path %></li>
+        <li><%= link_to "Shows", shows_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
-          <li><%= link_to current_user.name, edit_user_registration_path(current_user) %>
+          <li><%= link_to current_user.name, users_show_path(current_user) %>
           <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
           <% else %>
           <li><%= link_to "Sign In", new_user_session_path %></li>
