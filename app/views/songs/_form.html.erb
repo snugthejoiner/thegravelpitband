@@ -12,7 +12,7 @@
 
   <div class="actions">
     <p><%= f.text_area :lyrics, class: 'form-control' %></p>
-    <%= f.select(:release_id, options_for_select([["Serpent",2],["Extrackaganza",3],["Mass Ave",4],["Silver",5],["Manifesto",6],["Crash Land",7],["Favorite",9],["No One", 9]],@song.release_id)) %>
+    <%= f.select(:release_id, options_for_select([["Serpent",2],["Extrackaganza",3],["Mass Ave",4],["Silver",5],["Manifesto",6],["Crash Land",7],["Favorite",9],["No One", 8]],@song.release_id)) %>
     <%= f.submit value="Update", class: 'btn btn-success' %>
   </div>
 <% end %>
