@@ -11,6 +11,12 @@ class Story < ActiveRecord::Base
     end
   end
 
-  default_scope { order(created_at: :desc) }
+  def user_story_sort
+    self.user.sortation + (Time.now - self.created_at).to_s
+  end
+
+  def self.sorted_by_user_type
+    Story.all.sort_by(&:user_story_sort)
+  end
 
 end

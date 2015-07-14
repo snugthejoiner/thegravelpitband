@@ -8,20 +8,33 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
 
+  # admin = developer
   def admin?
     self.role == 'admin'
   end
 
-  def moderator?
-    self.role == 'moderator'
+  # band members and friends of the family
+  def commentator?
+    self.role == 'commentator'
   end
 
   def modplus?
-    admin? || moderator?
+    admin? || commentator?
   end
 
+  # citizens are confirmed users
   def citizen?
     self.role == 'citizen'
+  end
+
+  def sortation
+    if self.role == 'admin'
+      "A"
+    elsif self.role == 'commentator'
+      "B"
+    else
+      "C"
+    end 
   end
 
 end
