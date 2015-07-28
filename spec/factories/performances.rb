@@ -1,7 +1,7 @@
 FactoryGirl.define do
-  factory :show do
+  factory :performance do 
     date '1/1/2000 00:00:00'
-    place
+    show
+    act
   end
-
 end

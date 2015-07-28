@@ -2,6 +2,7 @@ class Show < ActiveRecord::Base
   belongs_to :place
   has_many :performances
   has_many :acts, through: :performances
+  validates :date, presence: true
 
   def performances?
     self.performances.count > 0
