@@ -15,6 +15,13 @@ describe Show, type: :model do
     expect(show.description).to eq("TT The Bear's Place in Cambridge, MA")
   end
 
-  it "returns a bill listing other acts that played" # for the 'bill' method
+  # for the 'bill' method
+  it "returns a bill listing other acts that played" do
+    binding.pry
+    place = FactoryGirl.create(:place)
+    performance = FactoryGirl.create(:performance)
+    show = Show.create(place_id: place.id, date: '1/1/2000')
+    expect(show.bill).to eq(performance.act)
+  end
   it "returns true if other acts played" # for the 'performance?' method
 end

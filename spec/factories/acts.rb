@@ -1,6 +1,6 @@
 FactoryGirl.define do
-  factory :act do |f|
-    f.name Faker::Lorem.word    
+  factory :act do
+    name Faker::Lorem.word    
   end
 
 end
