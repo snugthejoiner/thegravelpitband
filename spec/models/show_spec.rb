@@ -24,13 +24,13 @@ describe Show, type: :model do
     expect(show.bill).to eq(performance.act.name)
   end
 
-  # for the 'performance?' method
+  # for the 'performances?' method
   it "returns true if other acts played" do
     place = FactoryGirl.create(:place)
     act = FactoryGirl.create(:act)
     show = Show.create(place_id: place.id, date: '1/1/2000')
     performance = Performance.create(show_id: show.id, act_id: act.id)
-    expect(show.bill).to eq(performance.act.name)
+    expect(show.performances?).to eq(true)
   end
   # it "returns true if other acts played" do # for the 'performance?' method
   # end
