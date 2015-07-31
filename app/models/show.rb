@@ -17,7 +17,7 @@ class Show < ActiveRecord::Base
     
     self.place.name + " " +
     if self.place.address != nil && self.place.address != ""
-      self.place.address
+      self.place.address + " "
     else
       ""
     end +

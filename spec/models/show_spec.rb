@@ -15,6 +15,27 @@ describe Show, type: :model do
     expect(show.description).to eq("TT The Bear's Place in Cambridge, MA")
   end
 
+  # for the 'description' method with blank city
+  it "returns a description of the venue and its location" do
+    place = FactoryGirl.create(:place, city: nil)
+    show = Show.create(place_id: place.id, date: '1/1/2000')
+    expect(show.description).to eq("TT The Bear's Place , MA")
+  end
+
+  # for the 'description' method with blank state
+  it "returns a description of the venue and its location" do
+    place = FactoryGirl.create(:place, state: nil)
+    show = Show.create(place_id: place.id, date: '1/1/2000')
+    expect(show.description).to eq("TT The Bear's Place in Cambridge")
+  end
+
+    # for the 'description' method with a street address
+  it "returns a description of the venue and its location" do
+    place = FactoryGirl.create(:place, address: '10 Brookline Ave')
+    show = Show.create(place_id: place.id, date: '1/1/2000')
+    expect(show.description).to eq("TT The Bear's Place 10 Brookline Ave in Cambridge, MA")
+  end
+
   # for the 'bill' method
   it "returns a bill listing other acts that played" do
     place = FactoryGirl.create(:place)
