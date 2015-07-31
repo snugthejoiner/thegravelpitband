@@ -2,6 +2,7 @@ require 'simplecov'
     SimpleCov.start 'rails'
     require 'factory_girl'
     require 'devise'
+    require 'database_cleaner'
 
     RSpec.configure do |config|
       config.expect_with :rspec do |expectations|
