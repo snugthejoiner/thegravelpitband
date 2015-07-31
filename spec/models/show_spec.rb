@@ -4,7 +4,7 @@ describe Show, type: :model do
 
   it "fails to validate without a date" do
     bad_date = Show.create(place_id: 7)
-    expect { bad_date.save! }.to raise_error 
+    expect { bad_date.save! }.to raise_error(StandardError) 
     bad_date.errors.messages[:date].first.should == "can't be blank"
   end
   
