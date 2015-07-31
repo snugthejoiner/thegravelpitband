@@ -17,13 +17,24 @@ describe Show, type: :model do
 
   # for the 'bill' method
   it "returns a bill listing other acts that played" do
-    # place = FactoryGirl.create(:place)
-    binding.pry
+<<<<<<< HEAD
     place = FactoryGirl.create(:place)
+    act = FactoryGirl.create(:act)
     show = Show.create(place_id: place.id, date: '1/1/2000')
-    performance = FactoryGirl.create(:performance)
-    expect(show.bill).to eq(performance.act)
+    performance = Performance.create(show_id: show.id, act_id: act.id)
+    expect(show.bill).to eq(performance.act.name)
   end
 
   it "returns true if other acts played" # for the 'performance?' method
+=======
+    place = FactoryGirl.create(:place)
+    act = FactoryGirl.create(:act)
+    show = Show.create(place_id: place.id, date: '1/1/2000')
+    performance = Performance.create(show_id: show.id, act_id: act.id)
+    expect(show.bill).to eq(performance.act.name)
+  end
+  # it "returns true if other acts played" do # for the 'performance?' method
+  # end
+>>>>>>> a701537554681f790a3a74e5b86bde6135c15802
 end
+
