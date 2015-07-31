@@ -1,6 +1,18 @@
-ENV['RAILSENV'] ||= 'test' require 'spechelper' require File.expandpath('../../config/environment', _FILE_) require 'rspec/rails' require 'factorygirl' require 'devise'
+if ENV['coverage'] == 'on'
+  require 'simplecov'
+  SimpleCov.start 'rails' do
+    minimum_coverage 100
+  end
+end
 
-    ActiveRecord::Migration.maintain_test_schema!
+ENV['RAILS_ENV'] ||= 'test'
+require 'spec_helper'
+require File.expand_path('../../config/environment', __FILE__)
+require 'rspec/rails'
+require 'factory_girl'
+require 'devise'
+
+ActiveRecord::Migration.maintain_test_schema!
 
     RSpec.configure do |config|
       config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -13,3 +25,21 @@ ENV['RAILSENV'] ||= 'test' require 'spechelper' require File.expandpath('../../c
 
       config.infer_spec_type_from_file_location!
     end
+
+RSpec.configure do |config|
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:deletion)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+end
