@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get 'users/show'
 
+  resources :places, except: [:show]
+
   resources :stories, only: [:create, :edit, :new, :show, :update]
   delete 'remove_story' => 'stories#destroy'
 

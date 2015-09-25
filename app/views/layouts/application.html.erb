@@ -17,7 +17,12 @@
         <li><%= link_to "Songs", songs_path %></li>
         <li><%= link_to "Catalog", releases_path %></li>
         <li><%= link_to "Shows", shows_path %></li>
+        <% if user_signed_in? && current_user.admin? %>
+          <li><%= link_to "Acts", acts_path %></li>        
+          <li><%= link_to "Venues", places_path %></li>
+        <% end %>
       </ul>
+
       <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
           <li><%= link_to current_user.name, users_show_path(current_user) %>

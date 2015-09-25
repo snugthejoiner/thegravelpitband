@@ -1,0 +1,21 @@
+<% if policy(Place.new).create? %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to 'New Venue', new_place_path, class: 'btn btn-success'  %>
+    </div>
+  </div>
+<% end %>
+<br>
+<div class="row">
+  <div class="col-md-12">
+    <% @places.each do |place| %>
+      <p><%= place.name %>
+          <% if user_signed_in? %>
+            <small>
+              <%= link_to 'Edit', edit_place_path(place) %> | <%= link_to 'Delete', place, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </small>
+            </p>
+          <% end %>
+    <% end %>
+  </div>
+</div>

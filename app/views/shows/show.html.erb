@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="listing">
     <h1><%= @show.date.strftime('%A, %B %e, %Y') %></h1>
-      <h2><%= @show.description %></h2>
+      <h2><%= @show.full_description %></h2>
       <% if @show.performances? %>
         <p>with <%= @show.bill %></p>
       <% end %>
