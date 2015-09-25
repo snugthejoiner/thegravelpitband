@@ -1,7 +1,7 @@
 class PerformancesController < ApplicationController
   def create
     @show = Show.find(params[:show_id])
-    @Performance = Performance.new(show_id: @show.id, act_id: params[:act_id])
+      @Performance = Performance.new(show_id: @show.id, act_id: params[:act_id])
     if @Performance.save
       flash[:notice] = "Act added to show"
       redirect_to edit_show_path(@show)
