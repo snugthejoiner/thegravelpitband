@@ -15,21 +15,23 @@ class Show < ActiveRecord::Base
 
   def description
     
-    self.place.name + " " +
-    if self.place.address != nil && self.place.address != ""
-      self.place.address + " "
-    else
-      ""
-    end +
-    if self.place.city != nil && self.place.city != ""
-      "in " + self.place.city
-    else
-      ""
-    end +
-    if self.place.state != nil && self.place.state != ""
-      ", " + self.place.state
-    else
-      ""
+    unless self.place.nil?
+      self.place.name + " " +
+      if self.place.address != nil && self.place.address != ""
+        self.place.address + " "
+      else
+        ""
+      end +
+      if self.place.city != nil && self.place.city != ""
+        "in " + self.place.city
+      else
+        ""
+      end +
+      if self.place.state != nil && self.place.state != ""
+        ", " + self.place.state
+      else
+        ""
+      end
     end
 
   end
