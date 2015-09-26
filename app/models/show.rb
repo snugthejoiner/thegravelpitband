@@ -8,6 +8,10 @@ class Show < ActiveRecord::Base
     self.performances.count > 0
   end
 
+  def noted?
+    self.note != nil
+  end
+
   def bill
     a = self.acts.pluck(:name)
     a.join(", ")

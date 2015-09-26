@@ -28,8 +28,13 @@
       </div>
     </div>
       <div class="col-md-4">      
-        <%= f.submit value="SUBMIT", class: 'btn btn-success' %>
+        <%= f.text_area :note, size: "25x1", placeholder: "Note" %>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">      
+      <%= f.submit value="SUBMIT", class: 'btn btn-success' %>
     </div>
   </div>
 <% end %>

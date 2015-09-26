@@ -3,6 +3,8 @@ class Story < ActiveRecord::Base
   belongs_to :song
   belongs_to :release
 
+  validates :body, length: { maximum: 1000 }
+
   def story_title
     if self.song
       self.song.title

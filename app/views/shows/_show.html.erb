@@ -7,6 +7,9 @@
         <% if show.performances? %>
           <small class="listing">with <%= show.bill %></small>
         <% end %>
+        <% if show.noted? %>
+          <small title="This show has a note"><%= link_to "", show, class: 'glyphicon glyphicon-pencil' %></small>
+        <% end %>
     </div>
     </div>
 </div>
