@@ -1,0 +1,3 @@
+class PlacePolicy < ShowPolicy
+  
+end
