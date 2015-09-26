@@ -1,3 +1,5 @@
 == README
 
 This is web application for reflecting and commenting upon the music of The Gravel Pit.
+
+Sign up for free.
