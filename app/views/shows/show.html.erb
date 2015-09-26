@@ -6,7 +6,9 @@
       <% if @show.performances? %>
         <p>with <%= @show.bill %></p>
       <% end %>
-      <em><p><small>note:</small> <%= @show.note %></p></em>
+      <% if @show.noted? %>
+        <em><p><small>note:</small> <%= @show.note %></p></em>
+      <% end %>
     </div>
   </div>
 </div>
