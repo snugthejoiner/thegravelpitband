@@ -3,6 +3,8 @@ class Show < ActiveRecord::Base
   has_many :performances
   has_many :acts, through: :performances
   validates :date, presence: true
+  NULL_ATTRS = %w( note )
+  before_save :nil_if_blank
 
   def performances?
     self.performances.count > 0
@@ -58,5 +60,11 @@ class Show < ActiveRecord::Base
   end
 
   default_scope { order(date: :desc) }
+
+  protected
+
+  def nil_if_blank
+    NULL_ATTRS.each { |attr| self[attr] = nil if self[attr].blank? }
+  end
 
 end

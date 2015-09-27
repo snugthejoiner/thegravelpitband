@@ -11,7 +11,7 @@
   <% end %>
 
   <div class="actions">
-    <p><%= f.text_field :name, class: 'form-control' %></p>
+    <p><%= f.text_field :name, autofocus: true, class: 'form-control' %></p>
     <%= f.submit value="Save", class: 'btn btn-success' %>
     <%= link_to 'Back', acts_path, class: 'btn btn-info'  %>
   </div>

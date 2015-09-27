@@ -11,7 +11,7 @@
   <% end %>
 
   <div class="actions">
-    <p><%= f.text_area :body, class: 'form-control' %></p>
+    <p><%= f.text_area :body, autofocus: true, class: 'form-control' %></p>
     <%= f.submit value="Save", class: 'btn btn-success' %>
     <%= link_to 'Delete', remove_story_path(id: @story.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
   </div>
