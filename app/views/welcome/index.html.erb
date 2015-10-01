@@ -1,5 +1,21 @@
 <div class="jumbotron">
-  <h1>The Gravel Pit Universe</h1>
+    <h1>The Gravel Pit Universe</h1>
+      <% Show.upcoming.each do |show| %>
+        <h2>Upcoming</h2>
+          <%= show.date.strftime('%A, %B %e, %Y') %>
+          <%= show.descriptive %>
+          <% if show.performances? %>
+          <small>with <%= show.bill %></small>
+          <% end %>
+      <% end %>
+      <% Show.today_in_pit.each do |show| %>
+        <h2>Today in Pit History</h2>
+          <%= show.date.strftime('%A, %B %e, %Y') %>
+          <%= show.descriptive %>
+          <% if show.performances? %>
+          <small class="listing">with <%= show.bill %></small>
+          <% end %>
+      <% end %>
 </div>
 <div class="row">
   <div class="col-md-4">

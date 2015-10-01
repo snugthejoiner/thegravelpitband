@@ -36,6 +36,23 @@ class Show < ActiveRecord::Base
     end
   end
 
+  def descriptive
+    
+    unless self.place.nil?
+      " at " + self.place.name + " " +
+      if self.place.city != nil && self.place.city != ""
+        "in " + self.place.city
+      else
+        ""
+      end +
+      if self.place.state != nil && self.place.state != ""
+        ", " + self.place.state
+      else
+        ""
+      end
+    end
+  end
+
   def full_description
     
     unless self.place.nil?
@@ -60,6 +77,14 @@ class Show < ActiveRecord::Base
   end
 
   default_scope { order(date: :desc) }
+
+  def self.today_in_pit
+    where("strftime('%m', date) + 0 = ? and strftime('%d', date) + 0 = ?", DateTime.now.month, DateTime.now.day)
+  end
+
+  def self.upcoming
+    where("date >= ?", DateTime.now)
+  end
 
   protected
 
