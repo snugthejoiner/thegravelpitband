@@ -2,14 +2,17 @@ class Story < ActiveRecord::Base
   belongs_to :user
   belongs_to :song
   belongs_to :release
+  belongs_to :show
 
   validates :body, length: { maximum: 1000 }
 
   def story_title
     if self.song
       self.song.title
-    else
+    elsif self.release
       self.release.title
+    else
+      self.show.description + " on " + self.show.date.strftime('%B %e, %Y')
     end
   end
 

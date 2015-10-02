@@ -8,6 +8,9 @@
         <% end %>
       <% if @release %>
         <%= f.hidden_field :release_id, value: release.id %>
+      <% end %>
+      <% if @show %>
+        <%= f.hidden_field :show_id, value: show.id %>
         <% end %>
       <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.submit "Save" , class: 'btn btn-success btn-xs' %>

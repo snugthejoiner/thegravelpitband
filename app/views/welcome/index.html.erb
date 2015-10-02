@@ -8,13 +8,13 @@
           <small>with <%= show.bill %></small>
           <% end %>
       <% end %>
+      <h2>Today in Pit History</h2>
       <% Show.today_in_pit.each do |show| %>
-        <h2>Today in Pit History</h2>
           <%= show.date.strftime('%A, %B %e, %Y') %>
           <%= show.descriptive %>
           <% if show.performances? %>
           <small class="listing">with <%= show.bill %></small>
-          <% end %>
+          <% end %><br>
       <% end %>
 </div>
 <div class="row">
@@ -27,7 +27,7 @@
     <p>Ponder the recorded output. <%= link_to "Sign Up", new_user_registration_path %> to become a Citizen and you can rate and comment on releases.</p>  </div>
   <div class="col-md-4">
     <h2><%= link_to "Shows", shows_path %></h2>
-    <p>The history of performances.</p>
+    <p>The history of performances. <%= link_to "Sign Up", new_user_registration_path %> to become a Citizen and you can rate and comment on releases.</p>
   </div>
 </div>
 <div class="row">

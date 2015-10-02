@@ -47,7 +47,7 @@ class StoriesController < ApplicationController
       flash[:notice] = "Updated."
       redirect_to session.delete(:return_to)
     else
-      flash[:error] = "There was an error updating the Story."
+      flash[:error] = "There was an error updating this story."
       render :edit
     end
   end
@@ -56,6 +56,6 @@ class StoriesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def story_params
-    params.require(:story).permit(:title, :body, :user_id, :song_id, :release_id)
+    params.require(:story).permit(:title, :body, :user_id, :song_id, :release_id, :show_id)
   end
 end

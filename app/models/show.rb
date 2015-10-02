@@ -1,5 +1,6 @@
 class Show < ActiveRecord::Base
   belongs_to :place
+  has_many :stories
   has_many :performances
   has_many :acts, through: :performances
   validates :date, presence: true
@@ -80,9 +81,9 @@ class Show < ActiveRecord::Base
 
   def self.today_in_pit
     # sqlite3 version
-    # where("strftime('%m', date) + 0 = ? and strftime('%d', date) + 0 = ?", DateTime.now.month, DateTime.now.day)
+    where("strftime('%m', date) + 0 = ? and strftime('%d', date) + 0 = ?", DateTime.now.month, DateTime.now.day)
     # postgres version
-    where("extract(month from date) = ? and extract(day from date) = ? ", DateTime.now.month, DateTime.now.day)
+    #where("extract(month from date) = ? and extract(day from date) = ? ", DateTime.now.month, DateTime.now.day)
 
   end
 

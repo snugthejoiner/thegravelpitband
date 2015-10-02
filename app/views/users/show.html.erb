@@ -14,8 +14,10 @@
       <strong>
         <% if story.song %>
         <%= link_to story.story_title, song_path(story.song) %>
+      <% elsif story.release %>
+        <%= link_to story.story_title, release_path(story.release) %>
       <% else %>
-        <%= link_to story.story_title, release_path(story.release) %>      
+        <%= link_to story.story_title, show_path(story.show) %>
       <% end %>
     </strong></p>
   <% end %>
