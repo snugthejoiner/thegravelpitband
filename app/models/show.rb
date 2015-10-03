@@ -1,4 +1,5 @@
 class Show < ActiveRecord::Base
+  
   belongs_to :place
   has_many :stories
   has_many :performances
@@ -12,12 +13,19 @@ class Show < ActiveRecord::Base
   end
 
   def noted?
-    self.note != nil
+    self.note != nil || self.stories.count > 0
   end
 
   def bill
-    a = self.acts.pluck(:name)
-    a.join(", ")
+    if self.performances?
+    "with #{self.acts.pluck(:name).join(", ")}"
+    else
+    ""
+    end
+  end
+
+  def complete_listing
+    "#{self.date.strftime('%A, %B %e, %Y')} #{self.description} #{self.bill}"
   end
 
   def description
@@ -80,11 +88,11 @@ class Show < ActiveRecord::Base
   default_scope { order(date: :desc) }
 
   def self.today_in_pit
-    # sqlite3 version
-    where("strftime('%m', date) + 0 = ? and strftime('%d', date) + 0 = ?", DateTime.now.month, DateTime.now.day)
-    # postgres version
-    #where("extract(month from date) = ? and extract(day from date) = ? ", DateTime.now.month, DateTime.now.day)
-
+    if ENV['RAILS_ENV'] == 'development'    # sqlite3 version
+      where("strftime('%m', date) + 0 = ? and strftime('%d', date) + 0 = ?", DateTime.now.month, DateTime.now.day)
+    else # postgres version
+    where("extract(month from date) = ? and extract(day from date) = ? ", DateTime.now.month, DateTime.now.day)
+    end
   end
 
   def self.upcoming
