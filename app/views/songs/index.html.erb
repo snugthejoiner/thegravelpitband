@@ -1,17 +1,11 @@
-<div class="row">
-  <div class="col-md-12">
-    <p class="listing">
-      <%= render partial: "song", collection: @songs %>
-    </p>
-  </div>
-</div>
+<h2>Songs</h2><hr>
+
+<%= render partial: "song", collection: @songs %>
+
 <br>
+
 <% if user_signed_in? %>
   <% if current_user.admin? %>
-    <div class="row">
-      <div class="col-md-12">
         <%= link_to 'New Song', new_song_path, class: 'btn btn-success'  %>
-      </div>
-    </div>
   <% end %>
 <% end %>

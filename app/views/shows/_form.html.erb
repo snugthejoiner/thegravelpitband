@@ -1,42 +1,31 @@
-<div class="row">
-  <div class="col-md-12">
-    <%= form_for(@show) do |f| %>
-    <% if @show.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@show.errors.count, "error") %> prohibited this show from being saved:</h2>
-      <ul>
-      <% @show.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= form_for(@show) do |f| %>
+<% if @show.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@show.errors.count, "error") %> prohibited this show from being saved:</h2>
+    <ul>
+    <% @show.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
   </div>
-</div>
+<% end %>
 
-<% end %>
 <hr>
-<div class="row">
-  <div class="col-md-12">
-    <div class="actions">
-      <div class="col-md-4">
-        <%= f.label :date %>
-        <%= f.date_select :date, autofocus: true, start_year: 1985, class: 'form-control' %>
-      </div>
-      <div class="col-md-4">
-      <%= f.label :venue %>
-      <%= f.collection_select :place_id, Place.order(:name),:id,:name, include_blank: true %>
-      </div>
-    </div>
-      <div class="col-md-4">            
-        <%= f.text_area :note, size: "25x1", placeholder: "Note" %>
-      </div>
-    </div>
+
+<div class="actions">
+  <div class="col-md-4">
+    <%= f.label :date %>
+    <%= f.date_select :date, autofocus: true, start_year: 1985, class: 'form-control' %>
   </div>
-  <div class="row">
-    <div class="col-md-4">      
-      <%= f.submit value="SUBMIT", class: 'btn btn-success' %>
-    </div>
+  <div class="col-md-4">
+    <%= f.label :venue %>
+    <%= f.collection_select :place_id, Place.order(:name),:id,:name, include_blank: true %>
   </div>
+</div>
+  <div class="col-md-4">            
+    <%= f.text_area :note, size: "25x1", placeholder: "Note" %>
+  </div>
+</div>
+</div>
+  <%= f.submit value="SUBMIT", class: 'btn btn-success' %>
 <% end %>
-</div>
-</div>

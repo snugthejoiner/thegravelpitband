@@ -1,5 +1,3 @@
-<div class="row">
-  <div class="col-md-12">
     <%= form_for Story.new do |f| %>
     <div class="form-group">
       <p><%= f.text_area :body, autofocus: true, maxlength: "1000", size: "60x1", placeholder: "Comment"%></p>
@@ -17,5 +15,3 @@
     <% end %>
     <%= link_to "Cancel", @song, class: 'btn btn-danger btn-xs' %>
   </div>
-</div>
-</div>

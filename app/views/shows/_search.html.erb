@@ -1,6 +1,4 @@
-<div class="row">
-  <div class="col-md-12">
-    <small>
+<small>
     <%= search_form_for @q do |f| %>
 
     <%= f.collection_select :place_name_eq, Place.order(:name),:name,:name, include_blank: true %>
@@ -10,9 +8,7 @@
     <%= f.collection_select :place_city_eq, Place.select(:city).uniq.order(:city),:city,:city, include_blank: false %>
 
     <%= f.collection_select :place_state_eq, Place.select(:state).uniq.order(:state),:state,:state, include_blank: false %>
-    <%= f.submit value="Search", class: 'btn btn-sm btn-success' %>
-    <%= link_to 'Reset', shows_path, class: 'btn btn-sm btn-warning' %>
+    <%= f.submit value="Search", class: 'btn btn-xs btn-success' %>
+    <%= link_to 'Reset', shows_path, class: 'btn btn-xs btn-warning' %>
     <% end %>
     </small>
-  </div>
-</div>
