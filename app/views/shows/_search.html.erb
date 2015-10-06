@@ -11,7 +11,7 @@
 
     <%= f.collection_select :place_state_eq, Place.select(:state).uniq.order(:state),:state,:state, include_blank: false %>
     <%= f.submit value="Search", class: 'btn btn-sm btn-success' %>
-    <%= link_to 'Reset', shows_path, class: 'btn btn-smx btn-warning' %>
+    <%= link_to 'Reset', shows_path, class: 'btn btn-sm btn-warning' %>
     <% end %>
     </small>
   </div>

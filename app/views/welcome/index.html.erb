@@ -6,7 +6,7 @@
           <%= show.date.strftime('%A, %B %e, %Y') %>
           <%= show.descriptive %>
           <% if show.performances? %>
-          <small>with <%= show.bill %></small>
+          <small><%= show.bill %></small>
           <% end %>
           <% end %>
       <% end %>
@@ -16,7 +16,7 @@
           <%= show.date.strftime('%A, %B %e, %Y') %>
           <%= show.descriptive %>
           <% if show.performances? %>
-          <small class="listing">with <%= show.bill %></small>
+          <small><%= show.bill %></small>
         <% end %><br>
         <% end %>
       <% end %>
