@@ -1,19 +1,11 @@
-<div class="row">
-  <div class="col-md-12">
-    <div class="listing">
-      <% @releases.each do |release| %>
-      <h1><%= link_to release.title, release %> <small><%= release.release_date.strftime('%Y') %></small></h1>
-      <% end %>
-    </div>
-  </div>
-</div>
+<h2>Catalog</h2><hr>
+
+<% @releases.each do |release| %>
+  <p><%= link_to release.title, release %> <small><%= release.release_date.strftime('%Y') %></small></p>
+<% end %>
 <br>
 <% if user_signed_in? %>
   <% if current_user.admin? %>
-    <div class="row">
-      <div class="col-md-12">
-        <%= link_to 'New Release', new_release_path, class: 'btn btn-success'  %>
-      </div>
-    </div>
+    <%= link_to 'New Release', new_release_path, class: 'btn btn-success'  %>
   <% end %>
 <% end %>

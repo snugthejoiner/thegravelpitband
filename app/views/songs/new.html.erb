@@ -1,12 +1,10 @@
-<div class="row">
-  <div class="col-md-12">
-    <%= form_for @song do |f| %>
-    <div class="form-group">
-      <h1><%= f.text_field :title, placeholder: "Title", autofocus: true %></h1>
-      <p><%= f.text_area :lyrics, size: "75x10" %></p>
-      <%= f.select(:release_id, options_for_select([["Serpent",1],["Mass Ave",2],["Silver",3],["Manifesto",4],["Crash Land",5],["Favorite",6],["No One", 7],["Extrackaganza", 8]],@song.release_id)) %>
+<h2>Shows</h2><hr>
+
+<%= form_for @song do |f| %>
+  <div class="form-group">
+    <h1><%= f.text_field :title, placeholder: "Title", autofocus: true %></h1>
+    <p><%= f.text_area :lyrics, size: "75x10" %></p>
+    <%= f.select(:release_id, options_for_select([["Serpent",1],["Mass Ave",2],["Silver",3],["Manifesto",4],["Crash Land",5],["Favorite",6],["No One", 7],["Extrackaganza", 8]],@song.release_id)) %>
     <%= f.submit "Save" , class: 'btn btn-primary' %>
-    <% end %>
+<% end %>
     <%= link_to "Cancel", :back, class: 'btn btn-danger' %>
-  </div>
-</div>
