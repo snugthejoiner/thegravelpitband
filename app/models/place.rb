@@ -5,4 +5,8 @@ class Place < ActiveRecord::Base
 
   validates_uniqueness_of :name
 
+  def city_state
+    "#{self.city}, #{state}"
+  end
+
 end
