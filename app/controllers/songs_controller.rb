@@ -2,7 +2,8 @@ class SongsController < ApplicationController
   before_action :set_song, only: [:show, :edit, :update, :destroy]
 
   def index
-    @songs = Song.sorted_by_smart_alpha
+    @q = Song.ransack(params[:q])
+    @songs = @q.result.sorted_by_smart_alpha
   end
 
   def new

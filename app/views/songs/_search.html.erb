@@ -1,0 +1,10 @@
+<small>
+    <%= search_form_for @q do |f| %>
+
+    <%= f.search_field :lyrics_cont %>
+    
+    <%= f.submit value="Search", class: 'btn btn-xs btn-success' %>
+    <%= link_to 'Reset', songs_path, class: 'btn btn-xs btn-warning' %>
+    <% end %>
+
+</small>
