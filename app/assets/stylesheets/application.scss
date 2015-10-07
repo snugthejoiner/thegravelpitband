@@ -16,3 +16,33 @@
  
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+a:hover { 
+  color: red;
+  text-decoration:none;
+}
+
+.listing {
+font-size: large;
+}
+
+.listing small{
+font-size: smaller;
+color: #999999;
+}
+
+.listing a:link { 
+  color: #333333;
+}
+.listing a:visited { 
+  color: #333333;
+}
+
+.listing a:hover { 
+  color: red;
+  text-decoration:none;
+}
+
+.listing:active { 
+  color: #333333;
+}

@@ -1,7 +1,7 @@
 <h2>Catalog</h2><hr>
 
 <% @releases.each do |release| %>
-  <p><%= link_to release.title, release %> <small><%= release.release_date.strftime('%Y') %></small></p>
+  <p class="listing"><%= link_to release.title, release %> <small class="listing"><%= release.release_date.strftime('%Y') %></small></p>
 <% end %>
 <br>
 <% if user_signed_in? %>
