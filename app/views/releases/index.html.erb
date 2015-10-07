@@ -1,9 +1,18 @@
 <h2>Catalog</h2><hr>
 
-<% @releases.each do |release| %>
-  <p class="listing"><%= link_to release.title, release %> <small class="listing"><%= release.release_date.strftime('%Y') %></small></p>
-<% end %>
-<br>
+  <% @releases.each do |release| %>
+    <div class="row">
+      <div class="col-md-4">
+        <p class="listing"><%= link_to release.title, release %> <small class="listing"><%= release.release_date.strftime('%Y') %></small>
+        </p>
+      </div>
+      <div class="col-md-8">
+        <%= link_to image_tag(cover_art(release),:size => "80x80"), release_path(release) %>
+      </div>
+    </div>
+    <br>
+  <% end %>
+
 <% if user_signed_in? %>
   <% if current_user.admin? %>
     <%= link_to 'New Release', new_release_path, class: 'btn btn-success'  %>

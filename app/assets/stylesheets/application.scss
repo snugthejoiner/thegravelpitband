@@ -31,18 +31,18 @@ font-size: smaller;
 color: #999999;
 }
 
-.listing a:link { 
+.listing a:link,.category a:link { 
   color: #333333;
 }
-.listing a:visited { 
+.listing a:visited,.category a:visited { 
   color: #333333;
 }
 
-.listing a:hover { 
+.listing a:hover,.category a:hover { 
   color: red;
   text-decoration:none;
 }
 
-.listing:active { 
+.listing a:active,.category a:active { 
   color: #333333;
 }

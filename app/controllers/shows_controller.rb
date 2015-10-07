@@ -5,7 +5,7 @@ class ShowsController < ApplicationController
   # GET /shows.json
   def index
     @q = Show.ransack(params[:q])
-    @shows = @q.result.includes(:place, :acts).paginate(:page => params[:page], :per_page => 100)
+    @shows = @q.result.includes(:place, :acts).paginate(:page => params[:page], :per_page => 75)
   end
 
   # GET /shows/1

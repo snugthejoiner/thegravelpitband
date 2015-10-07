@@ -12,10 +12,10 @@
         <% unless Show.today_in_pit.empty? %>
         <h2>Today in Pit History</h2>
         <% Show.today_in_pit.each do |show| %>
-          <p class="listing"><%= show.date.strftime('%A, %B %e, %Y') %>
-          <%= show.descriptive %>
+          <p class="listing"><%= link_to show.date.strftime('%A, %B %e, %Y'), show_path(show) %>
+          <%= link_to show.descriptive, show_path(show) %>
           <% if show.performances? %>
-          <small><%= show.bill %></small>
+          <small><%= link_to show.bill, show_path(show) %></small>
         <% end %>
         <% end %></p>
       <% end %>
