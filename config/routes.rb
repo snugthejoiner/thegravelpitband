@@ -4,10 +4,10 @@ Rails.application.routes.draw do
 
   resources :places, except: [:show]
 
-  resources :stories, only: [:create, :edit, :new, :show, :update]
+  resources :stories, only: [:index, :create, :edit, :new, :show, :update]
   delete 'remove_story' => 'stories#destroy'
 
-  resources :ratings, only: [:create, :edit, :new, :show, :update]
+  resources :ratings, only: [:index, :create, :edit, :new, :show, :update]
   delete 'remove_rating' => 'ratings#destroy'
 
   resources :releases
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations'}
   
   get 'welcome/index'
+  get 'welcome/about'
 
   resources :shows, except: [:destroy]
   delete 'remove_show' => 'shows#destroy'

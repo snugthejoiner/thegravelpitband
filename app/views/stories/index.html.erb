@@ -1,0 +1,13 @@
+<h2>Comments</h2>
+<% @stories.each do |story| %>
+  <p><%= story.body %> <small>said <%= story.user.name %> of
+      <% if story.song %>the song
+        <%= link_to story.story_title, song_path(story.song) %>
+      <% elsif story.release %>the release 
+        <%= link_to story.story_title, release_path(story.release) %>
+      <% else %>of the show at 
+        <%= link_to story.story_title, show_path(story.show) %>
+      <% end %></small>
+  </p>
+<% end %>
+    

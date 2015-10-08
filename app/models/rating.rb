@@ -3,6 +3,9 @@ class Rating < ActiveRecord::Base
   belongs_to :song
   belongs_to :release
 
+  scope :new_ratings, -> { order(updated_at: :desc).limit(5) }
+  scope :ratings_list, -> { order(updated_at: :desc) }
+
   def rating_title
     if self.song
       self.song.title

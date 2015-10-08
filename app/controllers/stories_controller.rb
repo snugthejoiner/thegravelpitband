@@ -1,5 +1,6 @@
 class StoriesController < ApplicationController
   def index
+    @stories = Story.storyline
   end
 
   def new

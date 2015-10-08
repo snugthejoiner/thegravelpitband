@@ -10,7 +10,10 @@
   <% end %>
 
 <% if user_signed_in? %>
-  <%= age_at_show(@show) %>
+  <%= age_at_show(@show) %> <%= age_of_pit_at_show(@show) %>
+  <% if same_age_at_show?(@show) %>
+      Also.
+  <% end %>
   <hr>
 <% end %>
 
@@ -24,8 +27,10 @@
   <% if policy(@show).edit? %>
     <%= link_to 'EDIT', edit_show_path(@show), class: 'btn btn-warning' %>
   <% end %>
+  <% else %>
+    <p><mark>To comment on a show you need to <%= link_to "Sign In", new_user_session_path %> or <%= link_to "Sign Up", new_user_registration_path %> for a (free) account and become a citizen</mark></p>
 <% end %>
 
-<%= link_to 'Back', :back, class: 'btn btn-info' %>
+<%= link_to 'Back', :back, class: 'btn btn-default' %>
 
 <br>

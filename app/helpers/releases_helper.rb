@@ -7,6 +7,14 @@ module ReleasesHelper
     end
   end
 
+  def age_of_pit_when_released(release)
+    "The youngest member of The Pit was #{distance_of_time_in_words(release.release_date,'1969-04-28').sub(/^about /i, "").sub(/^almost /i, "").sub(/^over /i, "")} old."
+  end
+
+  def same_age_when_released?(release)
+    distance_of_time_in_words(release.release_date, current_user.birthdate) == distance_of_time_in_words(release.release_date, '1969-04-28')
+  end
+
   def cover_art(release)
     if release.title == "Serpent Umbrella"
       "serpent_umbrella.jpg"
@@ -20,7 +28,7 @@ module ReleasesHelper
       "the_gravel_pit_manifesto.jpg"
     elsif  release.title == "No One Here Gets In For Free"
       "no_one.jpg"
-    elsif  release.title == "Favorite (4 song)"
+    elsif  release.title == "Favorite"
       "favorite.jpg"
     else
       "crash_land.jpg"
@@ -40,7 +48,7 @@ module ReleasesHelper
       "http://q-dee.com/album/the-gravel-pit-manifesto"
     elsif  release.title == "No One Here Gets In For Free"
       "http://q-dee.com/album/no-one-here-gets-in-for-free"
-    elsif  release.title == "Favorite (4 song)"
+    elsif  release.title == "Favorite"
       "http://q-dee.com/album/favorite-ep"
     else
       "http://q-dee.com/album/crash-land"

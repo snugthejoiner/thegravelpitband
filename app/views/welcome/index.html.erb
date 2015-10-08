@@ -9,13 +9,40 @@
         <% end %>
         </p>
     <% end %>
-        <% unless Show.today_in_pit.empty? %>
-        <h2>Today in Pit History</h2>
+    <% unless Show.today_in_pit.empty? %>
+      <h2>Today in Pit History</h2>
         <% Show.today_in_pit.each do |show| %>
           <p class="listing"><%= link_to show.date.strftime('%A, %B %e, %Y'), show_path(show) %>
           <%= link_to show.descriptive, show_path(show) %>
           <% if show.performances? %>
           <small><%= link_to show.bill, show_path(show) %></small>
         <% end %>
-        <% end %></p>
-      <% end %>
+        <% end %>
+        </p>
+    <% end %>
+    <hr>
+    <h2>This is called The Gravel Pit Universe</h2>
+    <p>Find out what it is <%= link_to "about", welcome_about_path %>.</p>
+    <hr>
+    <h2>The Latest Comments</h2>
+    <% Story.new_stories.each do |story| %>
+    <p><%= story.body %> <small>said <%= story.user.name %> of
+        <% if story.song %>the song
+        <%= link_to story.story_title, song_path(story.song) %>
+      <% elsif story.release %>the release 
+        <%= link_to story.story_title, release_path(story.release) %>
+      <% else %>of the show at 
+        <%= link_to story.story_title, show_path(story.show) %>
+      <% end %></small>
+    </p>
+    <% end %>
+    <h2>The Latest Ratings</h2>
+    <% Rating.new_ratings.each do |rating| %>
+    <p><small><%= rating.user.name %> rated
+        <% if rating.song %>the song
+        <%= link_to rating.rating_title, song_path(rating.song) %>
+      <% else rating.release %>the release 
+        <%= link_to rating.rating_title, release_path(rating.release) %>
+      <% end %></small><%= rating.rating_value %> out of 7
+    </p>
+    <% end %>

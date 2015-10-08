@@ -1,0 +1,11 @@
+<h2>Ratings</h2>
+<% @ratings.each do |rating| %>
+  <p><small><%= rating.user.name %> rated
+    <% if rating.song %>the song
+      <%= link_to rating.rating_title, song_path(rating.song) %>
+    <% else rating.release %>the release 
+      <%= link_to rating.rating_title, release_path(rating.release) %>
+    <% end %></small><%= rating.rating_value %> out of 7
+  </p>
+<% end %>
+    

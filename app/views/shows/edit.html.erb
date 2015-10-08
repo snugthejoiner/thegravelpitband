@@ -4,7 +4,7 @@
   <% end %>
 </h3>
 
-<p><%= link_to 'Delete Show', remove_show_path(id: @show.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>  <%= link_to 'Back', shows_path, class: 'btn btn-info' %></p>
+<p><%= link_to 'Delete Show', remove_show_path(id: @show.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>  <%= link_to 'Back', shows_path, class: 'btn btn-default' %></p>
 <%= render 'form' %>
 
 <br>

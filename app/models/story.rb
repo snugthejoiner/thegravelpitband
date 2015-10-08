@@ -6,6 +6,9 @@ class Story < ActiveRecord::Base
 
   validates :body, length: { maximum: 1000 }
 
+  scope :new_stories, -> { order(updated_at: :desc).limit(5) }
+  scope :storyline, -> { order(updated_at: :desc) }
+
   def story_title
     if self.song
       self.song.title
