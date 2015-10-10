@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :name, length: { maximum: 122 } #because the name Pablo Diego José Francisco de Paula Juan Nepomuceno María de los Remedios Cipriano de la Santísima Trinidad Ruiz y Picasso has 122 characters
 
+  after_create :send_new_user_email
+
   # admin = developer
   def admin?
     self.role == 'admin'
@@ -36,6 +38,10 @@ class User < ActiveRecord::Base
     else
       "C"
     end 
+  end
+
+  def send_new_user_email
+    UserMailer.new_user(self).deliver_now
   end
 
 end
