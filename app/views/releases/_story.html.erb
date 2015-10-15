@@ -1,5 +1,5 @@
 <% @release.stories.sorted_by_user_type.each do |story| %>
-  <p>'<%= story.body %>' <small>said 
+  <p><%= markdown_line(story.body) %> <small>said 
     <% if story.user.name.nil? %>
       <%= story.user.email %>
     <% else %>
