@@ -4,11 +4,18 @@
       <small> from the release <%= link_to @song.release.title, release_path(@song.release) %></small>
     <% end %>
     </h2>
+
       <% if user_signed_in? %>
         <%= render partial: 'rating', locals: {song: @song} %>
       <% end %>
-      <%= simple_format(@song.lyrics) %>
-
+    <div class="row">
+      <div class="col-md-6">
+        <%= simple_format(@song.lyrics) %>
+      </div>
+      <div class="col-md-6">
+        <%= image_tag(song_art(@song)) %>
+      </div>
+    </div>
 <hr>
     <%= render partial: 'story', locals: {song: @song} %>
 

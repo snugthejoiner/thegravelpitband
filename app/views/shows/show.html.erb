@@ -14,6 +14,12 @@
   <% if same_age_at_show?(@show) %>
       Also.
   <% end %>
+  <div>
+    <% if show_art(@show) != nil %>
+    <br>
+      <%= image_tag(show_art(@show)) %>
+    <% end %>
+  </div>
   <hr>
 <% end %>
 

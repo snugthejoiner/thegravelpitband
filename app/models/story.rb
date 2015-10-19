@@ -9,6 +9,8 @@ class Story < ActiveRecord::Base
   scope :new_stories, -> { order(updated_at: :desc).limit(5) }
   scope :storyline, -> { order(updated_at: :desc) }
 
+  after_create :send_new_story_email
+
   def story_title
     if self.song
       self.song.title
@@ -25,6 +27,10 @@ class Story < ActiveRecord::Base
 
   def self.sorted_by_user_type
     Story.all.sort_by(&:user_story_sort)
+  end
+
+  def send_new_story_email
+    StoryMailer.new_story(self).deliver_now
   end
 
 end

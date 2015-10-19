@@ -10,7 +10,7 @@
   <div class="col-md-12">
   <h4>Your Comments:</h4>
   <% @user.stories.each do |story| %>
-    <p><%= story.body %>
+    <p><%= markdown_line(story.body) %>
       <strong>
         <% if story.song %>
         <%= link_to story.story_title, song_path(story.song) %>

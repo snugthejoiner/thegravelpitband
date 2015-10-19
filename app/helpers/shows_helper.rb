@@ -15,4 +15,12 @@ module ShowsHelper
     distance_of_time_in_words(show.date, current_user.birthdate) == distance_of_time_in_words(show.date, '1969-04-28')
   end
 
+  def show_art(show)
+    if show.id == 29
+      "cbgb_1990_09_20.jpg"
+    else
+      nil
+    end
+  end
+
 end

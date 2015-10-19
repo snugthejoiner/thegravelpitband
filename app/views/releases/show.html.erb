@@ -6,7 +6,7 @@
       <%= @release.title %>
     </h3>
     <p>released <%= @release.release_date.strftime('%A, %B %e, %Y') %></p>
-    <%= link_to "purchase a copy", purchase_link(@release) %>
+    <%= link_to "purchase or preview", purchase_link(@release) %>
   </div>
   <div class="col-md-6">
     <%= image_tag(cover_art(@release),:size => "200x200") %>
