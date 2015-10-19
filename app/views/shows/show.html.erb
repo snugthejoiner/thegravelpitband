@@ -8,18 +8,17 @@
     <% if @show.noted? %>
       <em><%= @show.note %></p></em>
   <% end %>
-
+  <div>
+    <% if show_art(@show) != nil %>
+      <%= image_tag(show_art(@show)) %>
+    <% end %>
+  </div>
+<br>
 <% if user_signed_in? %>
   <%= age_at_show(@show) %> <%= age_of_pit_at_show(@show) %>
   <% if same_age_at_show?(@show) %>
       Also.
   <% end %>
-  <div>
-    <% if show_art(@show) != nil %>
-    <br>
-      <%= image_tag(show_art(@show)) %>
-    <% end %>
-  </div>
   <hr>
 <% end %>
 
