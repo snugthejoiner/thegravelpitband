@@ -1,0 +1,30 @@
+Hello, <%= @user.name %>, here's what happened in The Gravel Pit Universe during <%= Date::MONTHNAMES[Date.yesterday.month] %>
+
+*Ratings*
+<% @ratings.sorted_by_rating_type.each do |rating| %>
+  <%= rating.rating_type %>
+    <% if rating.song %>
+      <%= link_to rating.rating_title, song_url(rating.song) %>
+    <% else %>
+      <%= link_to rating.rating_title, release_url(rating.release) %>
+    <% end %> was rated <%= rating.rating_value %> out of 7 by <%= rating.user.name %>
+  <% end %>
+
+*Comments*
+  <% @stories.each do |story| %>
+    <%= story.body %> said <%= story.user.name %> of
+      <% if story.song %>
+        <%= link_to story.story_title, song_url(story.song) %>
+      <% elsif story.release %>
+        <%= link_to story.story_title, release_url(story.release) %>
+      <% else %>
+        <%= link_to story.story_title, show_url(story.show) %>
+      <% end %>
+  
+  <% end %>
+
+---
+
+Have a good month, <%= link_to "The Gravel Pit Universe", root_url %>
+
+You can unsubscribe from this monthly email by updating your <%= link_to "user profile", edit_user_registration_url(@user) %>  

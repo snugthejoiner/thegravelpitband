@@ -17,6 +17,13 @@
 
   <br>
 
+  <div class="field">
+    <%= f.label :email_frequency %> <em>(how often would you like to receive a roundup of comments, ratings, new items and updates?)</em><br>
+    <%= f.select(:subscription, options_for_select([['Never','Never'],['Monthly','Monthly']],@user.subscription)) %>
+  </div>
+
+  <br>
+
   <div>
     <strong>Membership Type</strong> <%= current_user.role.titleize %>
   </div>

@@ -18,6 +18,13 @@
   <br>
 
   <div class="field">
+    <%= f.label :email_frequency %> <em>(a monthly roundup of comments, ratings, new items and updates)</em><br>
+    <%= f.select(:subscription, options_for_select([["Never"],["Monthly"]])) %>
+  </div>
+  
+  <br>
+
+  <div class="field">
     <%= f.label :email %> <em>(required)</em><br />
     <%= f.email_field :email, autofocus: true %>
   </div>

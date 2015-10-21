@@ -18,7 +18,7 @@ module SongsHelper
     elsif song.title == "Triple Little Man"
       "little.jpg"
     elsif  song.title == "Mr. Baby"
-      "baby.jpg"
+      "mister.jpg"
     elsif song.title == "Monomaniac"
       "monomaniac.jpg"
     elsif song.title == "Power Broker Blues"

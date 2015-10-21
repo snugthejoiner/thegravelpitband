@@ -1,6 +1,6 @@
     <%= form_for Story.new do |f| %>
     <div class="form-group">
-      <p><%= f.text_area :body, autofocus: true, maxlength: "1000", size: "60x1", placeholder: "Comment"%></p>
+      <p><%= f.text_area :body, maxlength: "1000", size: "60x1", placeholder: "Comment"%></p>
       <% if @song %>
         <%= f.hidden_field :song_id, value: song.id %>
         <% end %>

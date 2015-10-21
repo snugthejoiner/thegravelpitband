@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   after_create :send_new_user_email
 
+  scope :monthly_subscriber, -> { where('subscription = ?' , 'Monthly') }
+
   # admin = developer
   def admin?
     self.role == 'admin'

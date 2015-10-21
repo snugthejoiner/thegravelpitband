@@ -30,6 +30,14 @@ class Rating < ActiveRecord::Base
     Rating.all.sort_by(&:rating_sort)
   end
 
+  def self.last_month_in_pit_rating
+    if ENV['RAILS_ENV'] == 'development'    # sqlite3 version
+      where("strftime('%m', updated_at) + 0 = ?", 1.month.ago.month)
+    else # postgres version
+      where("extract(month from date) = ?", 1.month.ago.month)
+    end
+  end
+
   validates :rating_value, numericality: { greater_than: 0, less_than_or_equal_to: 7, message: "%{rating_value} is not a valid vote." }
 
 end

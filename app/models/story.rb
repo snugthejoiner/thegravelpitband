@@ -33,4 +33,12 @@ class Story < ActiveRecord::Base
     StoryMailer.new_story(self).deliver_now
   end
 
+  def self.last_month_in_pit
+    if ENV['RAILS_ENV'] == 'development'    # sqlite3 version
+      where("strftime('%m', updated_at) + 0 = ?", 1.month.ago.month)
+    else # postgres version
+      where("extract(month from date) = ?", 1.month.ago.month)
+    end
+  end
+
 end
