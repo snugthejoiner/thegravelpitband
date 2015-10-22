@@ -117,7 +117,7 @@ class Show < ActiveRecord::Base
 
   def self.upcoming
     where("date >= ?", DateTime.now)
-  end
+  end 
 
   protected
 

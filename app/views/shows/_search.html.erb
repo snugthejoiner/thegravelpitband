@@ -1,14 +1,23 @@
 <small>
-    <%= search_form_for @q do |f| %>
+  <%= search_form_for @q do |f| %>
+    <div class="row">
+      <div class="col-md-12">
+      <%= f.collection_select(:place_name_eq, Place.order(:name),:name,:name, {include_blank: false, :prompt => "Venue"}) %>
 
-    <%= f.collection_select :place_name_eq, Place.order(:name),:name,:name, include_blank: true %>
+      <%= f.collection_select(:acts_name_cont, Act.order(:name),:name,:name, {include_blank: false, :prompt => "Act"}) %>
 
-    <%= f.collection_select :acts_name_cont, Act.order(:name),:name,:name, include_blank: true %>
+      <%= f.collection_select(:place_city_eq, Place.select(:city).uniq.order(:city),:city,:city, {include_blank: false, :prompt => "City"}) %>
+      
+      <%= f.collection_select(:place_state_eq, Place.select(:state).uniq.order(:state),:state,:state, {include_blank: false, :prompt => "State"}) %> 
+      </div>
+    </div>
+    <br>
 
-    <%= f.collection_select :place_city_eq, Place.select(:city).uniq.order(:city),:city,:city, include_blank: false %>
-
-    <%= f.collection_select :place_state_eq, Place.select(:state).uniq.order(:state),:state,:state, include_blank: false %>
-    <%= f.submit value="Search", class: 'btn btn-xs btn-success' %>
-    <%= link_to 'Reset', shows_path, class: 'btn btn-xs btn-warning' %>
-    <% end %>
-    </small>
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.submit value="Search", class: 'btn btn-xs btn-success' %>
+        <%= link_to 'Reset', shows_path, class: 'btn btn-xs btn-warning' %>
+      </div>
+    </div>
+  <% end %>
+</small>
