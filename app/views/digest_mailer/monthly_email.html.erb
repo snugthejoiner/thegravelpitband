@@ -6,17 +6,20 @@
   <body>
   <h3>Hello, <%= @user.name %>, here's what happened in The Gravel Pit Universe during <%= Date::MONTHNAMES[1.month.ago.month] %></h3>
 
-  <h4>Ratings</h4>
-    <% @ratings.sorted_by_rating_type.each do |rating| %>
-    <p><%= rating.rating_type %><strong>
-      <% if rating.song %>
-        <%= link_to rating.rating_title, song_url(rating.song) %>
-      <% else %>
-        <%= link_to rating.rating_title, release_url(rating.release) %>
-      <% end %>
-  </strong> was rated <%= rating.rating_value %> out of 7 <small>by <%= rating.user.name %></small></p>
+  <% if @ratings.count > 0 %>
+    <h4>Ratings</h4>
+      <% @ratings.sorted_by_rating_type.each do |rating| %>
+      <p><%= rating.rating_type %><strong>
+        <% if rating.song %>
+          <%= link_to rating.rating_title, song_url(rating.song) %>
+        <% else %>
+          <%= link_to rating.rating_title, release_url(rating.release) %>
+        <% end %>
+    </strong> was rated <%= rating.rating_value %> out of 7 <small>by <%= rating.user.name %></small></p>
+    <% end %>
   <% end %>
 
+  <% if @stories.count > 0 %>
   <h4>Comments</h4>
     <% @stories.each do |story| %>
     <p><%= story.body %> <small>said <%= story.user.name %> of</small>
@@ -27,12 +30,34 @@
       <% else %>
         <%= link_to story.story_title, show_url(story.show) %>
       <% end %>
-  </p>
+    </p>
+    <% end %>
+  <% end %>
+
+  <% if @songs.count > 0 %>
+  <h4>Updated Songs</h4>
+    <% @songs.each do |song| %>
+    <p><%= link_to song.title, song_url(song) %></p>
+    <% end %>
+  <% end %>
+
+  <% if @releases.count > 0 %>
+  <h4>Updated Releases</h4>
+    <% @releases.each do |release| %>
+    <p><%= link_to release.title, release_url(release) %></p>
+    <% end %>
+  <% end %>
+
+  <% if @shows.count > 0 %>
+  <h4>Updated Shows</h4>
+    <% @shows.each do |show| %>
+    <p><%= link_to show.complete_listing, show_url(show) %></p>
+    <% end %>
   <% end %>
 
   <br>
 
-  <strong>Have a good <%= Date::MONTHNAMES[Date.today.month] %>, <%= link_to "The Gravel Pit Universe", root_url %></strong>
+  <h3>Have a good <%= Date::MONTHNAMES[Date.today.month] %> - <%= link_to "The Gravel Pit Universe", root_url %></h3>
   <p>You can unsubscribe from this monthly email by updating your <%= link_to "user profile", edit_user_registration_url(@user) %></p>  
   </body>
 </html>

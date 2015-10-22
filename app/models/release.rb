@@ -43,7 +43,21 @@ class Release < ActiveRecord::Base
     Release.all.sort_by(&:smart_alpha)
   end
 
-  
+  def self.mod_last_month
+    if ENV['RAILS_ENV'] == 'development'    # sqlite3 version
+      where("strftime('%m', updated_at) + 0 = ?", 1.month.ago.month)
+    else # postgres version
+      where("extract(month from updated_at) = ? ", 1.month.ago.month)
+    end
+  end
+
+  def self.created_last_month
+    if ENV['RAILS_ENV'] == 'development'    # sqlite3 version
+      where("strftime('%m', created_at) + 0 = ?", 1.month.ago.month)
+    else # postgres version
+      where("extract(month from created_at) = ? ", 1.month.ago.month)
+    end
+  end
 
   default_scope { order('release_date DESC') }
 end

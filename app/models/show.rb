@@ -91,6 +91,22 @@ class Show < ActiveRecord::Base
 
   default_scope { order(date: :desc) }
 
+  def self.mod_last_month
+    if ENV['RAILS_ENV'] == 'development'    # sqlite3 version
+      where("strftime('%m', updated_at) + 0 = ?", 1.month.ago.month)
+    else # postgres version
+      where("extract(month from updated_at) = ? ", 1.month.ago.month)
+    end
+  end
+
+  def self.created_last_month
+    if ENV['RAILS_ENV'] == 'development'    # sqlite3 version
+      where("strftime('%m', created_at) + 0 = ?", 1.month.ago.month)
+    else # postgres version
+      where("extract(month from created_at) = ? ", 1.month.ago.month)
+    end
+  end
+
   def self.today_in_pit
     if ENV['RAILS_ENV'] == 'development'    # sqlite3 version
       where("strftime('%m', date) + 0 = ? and strftime('%d', date) + 0 = ?", DateTime.now.month, DateTime.now.day)
