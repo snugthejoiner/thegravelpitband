@@ -5,8 +5,8 @@
   <% if @show.performances? %>
     <p><%= @show.bill %></p>
   <% end %>
-    <% if @show.noted? %>
-      <em><%= @show.note %></p></em>
+  <% if @show.noted? %>
+    <em><%= markdown_line(@show.note) %></p></em>
   <% end %>
   <div>
     <% if show_art(@show) != nil %>
