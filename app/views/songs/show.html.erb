@@ -1,9 +1,11 @@
-<h2>
+<h2 class="category"><%= link_to "Songs", songs_path %></h2><hr>
+
+<h1>
   <%= @song.title %>
     <% if @song.release %>
       <small> from the release <%= link_to @song.release.title, release_path(@song.release) %></small>
     <% end %>
-    </h2>
+    </h1>
 
       <% if user_signed_in? %>
         <%= render partial: 'rating', locals: {song: @song} %>
