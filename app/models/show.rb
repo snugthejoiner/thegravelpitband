@@ -8,6 +8,8 @@ class Show < ActiveRecord::Base
   NULL_ATTRS = %w( note )
   before_save :nil_if_blank
 
+  default_scope { order(date: :desc) }
+
   def performances?
     self.performances.count > 0
   end
@@ -89,8 +91,6 @@ class Show < ActiveRecord::Base
 
   end
 
-  default_scope { order(date: :desc) }
-
   def self.mod_last_month
     if ENV['RAILS_ENV'] == 'development'    # sqlite3 version
       where("strftime('%m', updated_at) + 0 = ?", 1.month.ago.month)
@@ -117,7 +117,7 @@ class Show < ActiveRecord::Base
 
   def self.upcoming
     where("date >= ?", DateTime.now)
-  end 
+  end
 
   protected
 

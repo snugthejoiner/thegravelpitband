@@ -8,9 +8,13 @@
 
       <%= f.collection_select(:place_city_eq, Place.select(:city).uniq.order(:city),:city,:city, {include_blank: false, :prompt => "City"}) %>
       
-      <%= f.collection_select(:place_state_eq, Place.select(:state).uniq.order(:state),:state,:state, {include_blank: false, :prompt => "State"}) %> 
+      <%= f.collection_select(:place_state_eq, Place.select(:state).uniq.order(:state),:state,:state, {include_blank: false, :prompt => "State"}) %>
+
+      &nbsp;from <%= f.select(:date_gteq, options_for_select([["1985",'1985-01-01'],["1990",'1990-01-01'],["1992",'1992-01-01'],["1994",'1994-01-01'],["1996",'1996-01-01'],["2000",'2000-01-01']])) %>
+        to <%= f.select(:date_lteq, options_for_select([["2085",'2085-12-31'],["2000",'2000-12-31'],["1998",'1998-12-31'],["1996",'1996-12-31'],["1994",'1994-12-31'],["1992",'1992-12-31'],["1990",'1990-12-31']])) %>
       </div>
     </div>
+
     <br>
 
     <div class="row">
@@ -20,4 +24,5 @@
       </div>
     </div>
   <% end %>
+
 </small>
