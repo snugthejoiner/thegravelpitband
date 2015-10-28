@@ -1,8 +1,6 @@
 class ShowsController < ApplicationController
   before_action :set_show, only: [:show, :edit, :update, :destroy]
 
-  before_action :loader
-
   # GET /shows
   # GET /shows.json
   def index
@@ -84,7 +82,4 @@ class ShowsController < ApplicationController
       params.require(:show).permit(:date, :place_id, :note)
     end
 
-    def loader
-      flash[:notice] = "Loading..."
-    end
 end
