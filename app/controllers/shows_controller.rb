@@ -1,10 +1,11 @@
 class ShowsController < ApplicationController
   before_action :set_show, only: [:show, :edit, :update, :destroy]
 
+  before_action :loader
+
   # GET /shows
   # GET /shows.json
   def index
-    flash[:notice] = "Loading..."
     @q = Show.ransack(params[:q])
     @shows = @q.result.includes(:place, :acts).paginate(:page => params[:page], :per_page => 50)
   end
@@ -81,5 +82,9 @@ class ShowsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def show_params
       params.require(:show).permit(:date, :place_id, :note)
+    end
+
+    def loader
+      flash[:notice] = "Loading..."
     end
 end
