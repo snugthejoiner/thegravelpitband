@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'users/show'
+  get 'users/index'
 
   resources :places, except: [:show]
 

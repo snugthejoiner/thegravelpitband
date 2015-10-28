@@ -1,0 +1,32 @@
+<% if user_signed_in? && current_user.admin? %><h2>Users</h2><hr>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered table-hover">
+        <tr>
+          <th>name</th>
+          <th>email</th>
+          <th>birthdate</th>
+          <th>subscription</th>
+          <th>role</th>
+          <th>sign ins</th>
+          <th>last sign in</th>
+        </tr>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.birthdate.strftime('%m-%e-%Y') %></td>
+          <td><%= user.subscription %></td>
+          <td><%= user.role %></td>
+          <td><%= user.sign_in_count %></td>
+          <% if user.last_sign_in_at.nil? %>
+            <td>Never!</td>
+            <% else %>
+            <td><%= user.last_sign_in_at.strftime('%m-%e-%Y') %></td>
+          <% end %>
+        </tr>
+        <% end %>
+                </table>
+    </div>
+  </div>
+<% end %>

@@ -4,6 +4,7 @@ class ShowsController < ApplicationController
   # GET /shows
   # GET /shows.json
   def index
+    flash[:notice] = "Loading..."
     @q = Show.ransack(params[:q])
     @shows = @q.result.includes(:place, :acts).paginate(:page => params[:page], :per_page => 50)
   end
