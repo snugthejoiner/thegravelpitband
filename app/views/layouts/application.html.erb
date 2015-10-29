@@ -53,10 +53,8 @@
                     <%= link_to "Shows", shows_path %>
                 </li>
                 <li><%= link_to "About", welcome_about_path %></li>
-                <% if user_signed_in? %>
-                  <li><%= link_to "Comments", stories_path %></li>
-                  <li><%= link_to "Ratings", ratings_path %></li>
-                <% end %>
+                <li><%= link_to "Comments", stories_path %></li>
+                <li><%= link_to "Ratings", ratings_path %></li>
                 <li><a href="https://www.facebook.com/thegravelpit">Facebook</a></li>
                 <li><a href="https://twitter.com/the_gravel_pit">Twitter</a></li>
                 <% if user_signed_in? %>
