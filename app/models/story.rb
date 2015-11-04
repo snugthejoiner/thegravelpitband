@@ -37,7 +37,7 @@ class Story < ActiveRecord::Base
     if ENV['RAILS_ENV'] == 'development'    # sqlite3 version
       where("strftime('%m', updated_at) + 0 = ?", 1.month.ago.month)
     else # postgres version
-      where("extract(month from date) = ?", 1.month.ago.month)
+      where("extract(month from updated_at) = ?", 1.month.ago.month)
     end
   end
 
