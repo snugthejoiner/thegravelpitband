@@ -83,7 +83,7 @@ end
 
   def ogdescription
     if controller.controller_name == 'shows' && controller.action_name == 'show'
-      @show.complete_listing
+      @show.full_description
     elsif controller.controller_name == 'songs' && controller.action_name == 'show'
       @song.song_rating
     elsif controller.controller_name == 'releases' && controller.action_name == 'show'

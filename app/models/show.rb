@@ -42,7 +42,6 @@ class Show < ActiveRecord::Base
     
     unless self.place.nil?
       self.place.name + " " +
-      self.place.name + " " +
       if self.place.city != nil && self.place.city != ""
         "in " + self.place.city
       else
