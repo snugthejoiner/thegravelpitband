@@ -69,9 +69,25 @@ end
     (redcarpet.render markdown).html_safe    
   end
 
+  def ogtitle
+    if controller.controller_name == 'shows' && controller.action_name == 'show'
+      @show.datinator
+    elsif controller.controller_name == 'songs' && controller.action_name == 'show'
+      @song.title
+    elsif controller.controller_name == 'releases' && controller.action_name == 'show'
+      @release.title
+    else
+      'The Gravel Pit'
+    end
+  end
+
   def ogdescription
     if controller.controller_name == 'shows' && controller.action_name == 'show'
       @show.complete_listing
+    elsif controller.controller_name == 'songs' && controller.action_name == 'show'
+      @song.song_rating
+    elsif controller.controller_name == 'releases' && controller.action_name == 'show'
+      @release.release_rating
     else
       'For the discerning fan of The Gravel Pit'
     end

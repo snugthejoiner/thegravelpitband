@@ -22,6 +22,10 @@ class Show < ActiveRecord::Base
     self.stories.count > 0
   end
 
+  def datinator
+    self.date.strftime('%A, %B %e, %Y')
+  end
+
   def bill
     if self.performances?
     "with #{self.acts.pluck(:name).join(", ")}"
@@ -37,6 +41,7 @@ class Show < ActiveRecord::Base
   def description
     
     unless self.place.nil?
+      self.place.name + " " +
       self.place.name + " " +
       if self.place.city != nil && self.place.city != ""
         "in " + self.place.city
