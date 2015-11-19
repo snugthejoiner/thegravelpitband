@@ -38,6 +38,10 @@ class Show < ActiveRecord::Base
     "#{self.date.strftime('%A, %B %e, %Y')} #{self.description} #{self.bill}"
   end
 
+  def description_and_bill
+    "#{self.description} #{self.bill}"
+  end
+
   def description
     
     unless self.place.nil?
