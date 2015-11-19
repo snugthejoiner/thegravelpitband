@@ -69,4 +69,12 @@ end
     (redcarpet.render markdown).html_safe    
   end
 
+  def ogdescription
+    if controller.controller_name == 'shows' && controller.action_name == 'show'
+      @show.complete_listing
+    else
+      'For the discerning fan of The Gravel Pit'
+    end
+  end
+
 end
