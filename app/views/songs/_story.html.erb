@@ -1,4 +1,4 @@
-<% @song.stories.sorted_by_user_type.each do |story| %>
+<% @song.stories.storyline.each do |story| %>
   <p><%= markdown_line(story.body) %> <small>said 
     <% if story.user.name.nil? %>
       <%= story.user.email %>
