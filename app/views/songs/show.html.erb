@@ -7,9 +7,8 @@
     <% end %>
     </h1>
 
-      <% if user_signed_in? %>
-        <%= render partial: 'rating', locals: {song: @song} %>
-      <% end %>
+    <%= render partial: 'rating', locals: {song: @song} %>
+    
     <div class="row">
       <div class="col-md-6">
         <%= simple_format(@song.lyrics) %>

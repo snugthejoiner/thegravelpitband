@@ -1,8 +1,8 @@
 <small>
   <%= @song.song_rating %> <%= @song.user_song_rating(current_user) %>
   <% if @song.rated_by_user?(current_user) %>
-  <%= render partial: '/ratings/form', locals: {rating: @rating} %>
-    <% elsif user_signed_in? %>
-  <%= render partial: '/ratings/new_rating', locals: {song: @song} %>
+    <%= render partial: '/ratings/form', locals: {rating: @rating} %>
+  <% elsif user_signed_in? %>
+    <%= render partial: '/ratings/new_rating', locals: {song: @song} %>
   <% end %>
 </small>

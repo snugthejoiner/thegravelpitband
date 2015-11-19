@@ -13,9 +13,11 @@
   </div>
 </div>
 
-<% if user_signed_in? %>
 <br>
-  <%= render partial: 'rating', locals: {release: @release} %>
+
+<%= render partial: 'rating', locals: {release: @release} %>
+
+<% if user_signed_in? %>
 
 <div class="row">
   <div class="col-md-12">
