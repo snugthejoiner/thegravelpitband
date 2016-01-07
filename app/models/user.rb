@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   after_create :send_new_user_email
 
   scope :monthly_subscriber, -> { where('subscription = ?' , 'Monthly') }
+  scope :comment_subscriber, -> { where('subscription = ?' , 'Monthly') }
+  scope :relevant_comment_subscriber, -> { where('subscription = ?' , 'Never') }
 
   # admin = developer
   def admin?

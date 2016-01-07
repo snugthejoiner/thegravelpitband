@@ -9,7 +9,9 @@ class Story < ActiveRecord::Base
   scope :new_stories, -> { order(updated_at: :desc).limit(5) }
   scope :storyline, -> { order(updated_at: :desc) }
 
-  after_create :send_new_story_email
+  after_commit :send_new_story_email
+  after_commit :send_new_comment_email
+  after_commit :send_new_relevant_comment_email
 
   def story_title
     if self.song
@@ -33,6 +35,20 @@ class Story < ActiveRecord::Base
     StoryMailer.new_story(self).deliver_now
   end
 
+  def send_new_comment_email
+    User.comment_subscriber.each do |c|
+      StoryMailer.new_comment(self,c).deliver_now
+    end
+  end
+
+  def send_new_relevant_comment_email
+    User.relevant_comment_subscriber.each do |c|
+      if self.song && self.song.storied_by_user?(c)
+        StoryMailer.new_comment(self,c).deliver_now
+      end
+    end
+  end
+  
   def self.last_month_in_pit
     if ENV['RAILS_ENV'] == 'development'    # sqlite3 version
       where("strftime('%m', updated_at) + 0 = ?", 1.month.ago.month)

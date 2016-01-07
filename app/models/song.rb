@@ -7,6 +7,10 @@ class Song < ActiveRecord::Base
     self.ratings.present? == true
   end
 
+  def storied_by_user?(u)
+    self.stories.where(user_id: u).present? == true
+  end
+
   def rated_by_user?(u)
     self.ratings.where(user_id: u).present? == true
   end
