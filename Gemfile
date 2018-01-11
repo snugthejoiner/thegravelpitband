@@ -47,7 +47,7 @@ group :development, :test do
   gem 'sqlite3'
 
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_bot'
   gem 'simplecov', :require => false
   gem 'pry-rails'
   gem 'database_cleaner'
