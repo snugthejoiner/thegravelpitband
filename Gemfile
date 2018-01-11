@@ -44,6 +44,8 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
+  gem 'sqlite3'
+
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'simplecov', :require => false
@@ -53,7 +55,8 @@ group :development, :test do
 end
 
 group :production do
- 
+gem 'pg', '~> 1.0'
+gem 'rails_12factor'
 end
 
 
