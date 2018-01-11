@@ -246,7 +246,7 @@ DEPENDENCIES
   figaro (= 1.0)
   jbuilder (~> 2.0)
   jquery-rails
-  pg (= 1.0.0)
+  pg (~> 1.0)
   pry-rails
   pundit
   rails (= 4.2.7.1)
