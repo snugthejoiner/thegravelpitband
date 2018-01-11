@@ -27,7 +27,7 @@ gem 'figaro', '1.0'
 gem 'pundit'
 gem 'yaml_db'
 gem 'redcarpet'
-gem 'will_paginate', github: 'jonatack/will_paginate'
+gem 'will_paginate'
 gem 'ransack'
 gem 'whenever', :require => false
 
