@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.2.1"
+ruby '2.2.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7.1'
@@ -11,6 +11,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+gem 'pg', '~> 1.0'
+gem 'rails_12factor'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -32,9 +34,6 @@ gem 'will_paginate'
 gem 'ransack'
 gem 'whenever', :require => false
 
-gem 'pg', '~> 1.0'
-gem 'rails_12factor'
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -44,8 +43,6 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-
-  gem 'sqlite3'
 
   gem 'rspec-rails'
   gem 'factory_girl_rails'
