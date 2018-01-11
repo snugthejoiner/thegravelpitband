@@ -32,6 +32,9 @@ gem 'will_paginate'
 gem 'ransack'
 gem 'whenever', :require => false
 
+gem 'pg', '~> 1.0'
+gem 'rails_12factor'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -53,8 +56,7 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg', '~> 1.0'
-  gem 'rails_12factor'
+ 
 end
 
 
